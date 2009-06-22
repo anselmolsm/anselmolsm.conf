@@ -1,0 +1,29 @@
+if [ "$TERM" != "dumb" ]; then
+	eval "`dircolors -b`"
+fi
+
+#for security reasons
+alias rm='rm -i'
+alias mv='mv -i'
+
+#simplifying common commands
+alias gvim='gvim -p'
+alias v='vim'
+alias umount='sudo umount'
+alias ll='ls -lh'
+alias sl='ls'
+
+#svn shortcuts
+alias st='svn st'
+alias srev='svn revert'
+alias sd='svn diff'
+alias ci='svn ci'
+alias up='svn up'
+
+#I use recursive grep a lot
+alias rgrep='grep -R'
+
+#using colors!
+alias grep='grep --colour=auto'
+alias vless='vim -u /usr/share/vim/vim71/macros/less.vim'
+

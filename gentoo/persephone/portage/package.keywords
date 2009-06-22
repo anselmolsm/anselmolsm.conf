@@ -1,0 +1,56 @@
+#from qting-edge
+## qt copy
+x11-libs/qt-assistant **
+x11-libs/qt-core **
+x11-libs/qt-dbus **
+x11-libs/qt-gui **
+x11-libs/qt-opengl **
+x11-libs/qt-qt3support **
+x11-libs/qt-script **
+x11-libs/qt-sql **
+x11-libs/qt-svg **
+x11-libs/qt-test **
+x11-libs/qt-webkit **
+x11-libs/qt-xmlpatterns **
+x11-libs/qt-phonon **
+
+# ---
+# BEGIN: www-client/arora-9999
+# ---
+=www-client/arora-9999 **
+# ---
+# END: www-client/arora-9999
+# ---
+
+
+# ---
+# BEGIN: dev-db/mysql-community-5.1.21_beta
+# ---
+# ---
+# END: dev-db/mysql-community-5.1.21_beta
+# ---
+
+
+# ---
+# BEGIN: dev-db/mysql-community-5.1.21_beta
+# ---
+# ---
+# END: dev-db/mysql-community-5.1.21_beta
+# ---
+
+
+# ---
+# BEGIN: virtual/mysql-5.1
+# ---
+# ---
+# END: virtual/mysql-5.1
+# ---
+
+
+# ---
+# BEGIN: dev-db/mysql-community-5.1.21_beta
+# ---
+# ---
+# END: dev-db/mysql-community-5.1.21_beta
+# ---
+

@@ -1,0 +1,34 @@
+>=dev-python/pycups-1.9.12
+>=net-misc/networkmanager-0.7.0
+>=net-wireless/bluez-4.28
+>=app-mobilephone/obex-data-server-0.3.4
+>=sys-auth/policykit-0.8
+
+
+
+#from qting-edge
+## Qt-copy
+=x11-libs/qt-assistant-4.5.9999
+=x11-libs/qt-core-4.5.9999
+=x11-libs/qt-dbus-4.5.9999
+=x11-libs/qt-gui-4.5.9999
+=x11-libs/qt-opengl-4.5.9999
+=x11-libs/qt-qt3support-4.5.9999
+=x11-libs/qt-script-4.5.9999
+=x11-libs/qt-sql-4.5.9999
+=x11-libs/qt-svg-4.5.9999
+=x11-libs/qt-test-4.5.9999
+=x11-libs/qt-webkit-4.5.9999
+=x11-libs/qt-xmlpatterns-4.5.9999
+
+www-client/arora
+>=dev-python/sip-4.8_pre20090601
+>=dev-python/PyQt4-4.5_pre20090601
+
+# ---
+# BEGIN: www-client/arora-9999
+# ---
+# ---
+# END: www-client/arora-9999
+# ---
+

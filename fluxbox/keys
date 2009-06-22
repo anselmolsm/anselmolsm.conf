@@ -1,0 +1,26 @@
+OnDesktop Mouse1 :HideMenus
+OnDesktop Mouse2 :WorkspaceMenu
+OnDesktop Mouse3 :RootMenu
+OnDesktop Mouse4 :NextWorkspace
+OnDesktop Mouse5 :PrevWorkspace
+
+Mod1 Tab :NextWindow
+Mod1 Shift Tab :PrevWindow
+
+Mod1 Control l :ExecCommand xscreensaver-command -lock
+Mod1 F2 :ExecCommand fbrun
+F10 :Maximize
+Mod1 F9 :Minimize
+
+Mod1 Control Return :ExecCommand gnome-terminal 
+
+Mod1 Control Left :PrevWorkspace
+Mod1 Control Right :NextWorkspace
+Mod1 Control Up :PrevWorkspace 2
+Mod1 Control Down :NextWorkspace 2
+
+Mod1 Control Shift Left :TakeToPrevWorkspace 1  
+Mod1 Control Shift Right :TakeToNextWorkspace 1
+Mod1 Control Shift Up :TakeToPrevWorkspace 2
+Mod1 Control Shift Down :TakeToNextWorkspace 2
+

@@ -1,202 +1,44 @@
-dev-libs/redland berkdb
-x11-libs/qt accessibility
-net-im/pidgin gtk
-kde-misc/knetworkmanager dialup
-app-editors/emacs gtk gzip-el
-app-editors/gvim gtk
-dev-libs/apr-util -mysql -ldap -sqlite
-app-text/poppler-bindings gtk
-net-analyzer/nmap gtk
-net-analyzer/wireshark gtk
-media-gfx/gimp -webkit
-app-doc/doxygen -qt4
-#net-irc/quassel monolithic
-net-libs/libpcap -bluetooth
-media-sound/amarok cdaudio mp3tunes
-kde-base/solid networkmanager
-net-misc/networkmanager dhclient dhcpcd nss resolvconf
-#dev-libs/soprano virtuoso
-x11-libs/qt-core qt3support
-x11-libs/qt-sql qt3support
-x11-libs/qt-gui qt3support
-app-text/djvu -nsplugin
-x11-libs/qt-opengl qt3support
-dev-python/PyQt4 qt3support
-media-sound/pulseaudio -bluetooth
-net-dns/avahi mdnsresponder-compat dbus
-dev-util/git cgi curl
-www-servers/cherokee admin
-kde-base/dolphin thumbnail debug
-sys-apps/tuxonice-userui fbsplash
-media-libs/libmng lcms
-media-video/transcode dvd
-net-misc/vpnc hybrid-auth
-sys-auth/pambase consolekit
-dev-util/qt-creator fakevim
-dev-lang/php -sqlite -crypt
-x11-misc/google-gadgets -gtk qt4
+dev-util/subversion -kde -emacs
+app-editors/emacs-cvs -gif -jpeg -png -svg -xpm xft
+dev-java/sun-jre-bin nsplugin
+net-misc/dhcpcd -zeroconf
 kde-base/kdeplasma-addons desktopglobe
 
 # ---
-# BEGIN: kde-base/drkonqi2-9999
+# BEGIN: virtual/emacs-23
 # ---
 # ---
-# END: kde-base/drkonqi2-9999
-# ---
-
-dev-util/subversion java -nls -kde
-
-# ---
-# BEGIN: kde-base/oxygen-icons-9999
-# ---
-# ---
-# END: kde-base/oxygen-icons-9999
+# END: virtual/emacs-23
 # ---
 
+media-plugins/kipi-plugins calendar cdr ipod redeyes scanner
+media-gfx/imagemagick tiff
 
 # ---
-# BEGIN: kde-base/oxygen-icons-9999
+# BEGIN: kde-misc/networkmanager-applet-9999
 # ---
+=kde-base/solid-4.2.98 networkmanager
 # ---
-# END: kde-base/oxygen-icons-9999
-# ---
-
-
-# ---
-# BEGIN: dev-db/virtuoso-5.0.10
-# ---
-# ---
-# END: dev-db/virtuoso-5.0.10
+# END: kde-misc/networkmanager-applet-9999
 # ---
 
+kde-base/solid wicd
 
 # ---
-# BEGIN: kde-base/policykit-kde-9999
+# BEGIN: media-sound/amarok-9999
 # ---
 # ---
-# END: kde-base/policykit-kde-9999
-# ---
-
-
-# ---
-# BEGIN: kde-base/libknotificationitem-9999
-# ---
-# ---
-# END: kde-base/libknotificationitem-9999
+# END: media-sound/amarok-9999
 # ---
 
+media-sound/amarok ipod mp3tunes mtp cdaudio lastfm
 
 # ---
-# BEGIN: kde-misc/menubar-9999
+# BEGIN: media-libs/liblastfm-9999
 # ---
 # ---
-# END: kde-misc/menubar-9999
-# ---
-
-
-# ---
-# BEGIN: kde-base/mplayerthumbs-9999
-# ---
-# ---
-# END: kde-base/mplayerthumbs-9999
+# END: media-libs/liblastfm-9999
 # ---
 
-net-im/skype qt-static
-app-admin/eselect paludis
-app-shells/bash plugins
-
-# ---
-# BEGIN: kde-base/mplayerthumbs-9999
-# ---
-# ---
-# END: kde-base/mplayerthumbs-9999
-# ---
-
-
-# ---
-# BEGIN: kde-base/kdelibs-4.2.9999-r1
-# ---
-# ---
-# END: kde-base/kdelibs-4.2.9999-r1
-# ---
-
-
-# ---
-# BEGIN: kde-base/kde-env-9999
-# ---
-# ---
-# END: kde-base/kde-env-9999
-# ---
-
-
-# ---
-# BEGIN: sys-block/partitionmanager-9999
-# ---
-# ---
-# END: sys-block/partitionmanager-9999
-# ---
-
-
-# ---
-# BEGIN: dev-python/PyQt4-4.5_pre20090601
-# ---
-# ---
-# END: dev-python/PyQt4-4.5_pre20090601
-# ---
-
-
-# ---
-# BEGIN: dev-python/sip-4.8_pre20090601
-# ---
-# ---
-# END: dev-python/sip-4.8_pre20090601
-# ---
-
-
-# ---
-# BEGIN: dev-python/PyQt4-4.5_pre20090601
-# ---
-# ---
-# END: dev-python/PyQt4-4.5_pre20090601
-# ---
-
-
-# ---
-# BEGIN: www-client/arora-9999
-# ---
-# ---
-# END: www-client/arora-9999
-# ---
-
-
-# ---
-# BEGIN: dev-db/mysql-community-5.1.21_beta
-# ---
-# ---
-# END: dev-db/mysql-community-5.1.21_beta
-# ---
-
-
-# ---
-# BEGIN: dev-db/mysql-community-5.1.21_beta
-# ---
-# ---
-# END: dev-db/mysql-community-5.1.21_beta
-# ---
-
-
-# ---
-# BEGIN: virtual/mysql-5.1
-# ---
-# ---
-# END: virtual/mysql-5.1
-# ---
-
-
-# ---
-# BEGIN: dev-db/mysql-community-5.1.21_beta
-# ---
-# ---
-# END: dev-db/mysql-community-5.1.21_beta
-# ---
-
+net-libs/libsoup -gnome
+dev-util/git tk emacs

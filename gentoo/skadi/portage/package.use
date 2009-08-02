@@ -4,7 +4,7 @@ net-im/pidgin gtk
 kde-misc/knetworkmanager dialup
 app-editors/emacs gtk gzip-el
 app-editors/gvim gtk
-dev-libs/apr-util -mysql -ldap -sqlite
+dev-libs/apr-util -mysql -sqlite ldap
 app-text/poppler-bindings gtk
 net-analyzer/nmap gtk
 net-analyzer/wireshark gtk
@@ -12,8 +12,8 @@ media-gfx/gimp -webkit
 app-doc/doxygen -qt4
 #net-irc/quassel monolithic
 net-libs/libpcap -bluetooth
-media-sound/amarok cdaudio mp3tunes
-kde-base/solid networkmanager
+media-sound/amarok cdaudio mp3tunes lastfm
+kde-base/solid networkmanager wicd
 net-misc/networkmanager dhclient dhcpcd nss resolvconf
 #dev-libs/soprano virtuoso
 x11-libs/qt-core qt3support
@@ -21,7 +21,7 @@ x11-libs/qt-sql qt3support
 x11-libs/qt-gui qt3support
 app-text/djvu -nsplugin
 x11-libs/qt-opengl qt3support
-dev-python/PyQt4 qt3support
+dev-python/PyQt4 qt3support doc examples
 media-sound/pulseaudio -bluetooth
 net-dns/avahi mdnsresponder-compat dbus
 dev-util/git cgi curl
@@ -166,3 +166,112 @@ app-admin/eselect paludis
 # ---
 
 app-arch/p7zip -kde rar
+
+# ---
+# BEGIN: x11-libs/qt-demo-4.5.9999
+# ---
+# ---
+# END: x11-libs/qt-demo-4.5.9999
+# ---
+
+
+# ---
+# BEGIN: www-client/mozilla-firefox-3.5
+# ---
+# ---
+# END: www-client/mozilla-firefox-3.5
+# ---
+
+net-libs/xulrunner -java
+
+# ---
+# BEGIN: www-client/mozilla-firefox-bin-3.5
+# ---
+# ---
+# END: www-client/mozilla-firefox-bin-3.5
+# ---
+
+sys-devel/gcc doc
+
+# ---
+# BEGIN: www-client/mozilla-firefox-3.5-r2
+# ---
+# ---
+# END: www-client/mozilla-firefox-3.5-r2
+# ---
+
+
+# ---
+# BEGIN: net-libs/xulrunner-1.9.1
+# ---
+# ---
+# END: net-libs/xulrunner-1.9.1
+# ---
+
+net-misc/wicd ioctl pm-utils
+app-editors/emacs-cvs -alsa -git -gpm -jpeg -png -svg -xpm xft -gif
+
+# ---
+# BEGIN: virtual/emacs-23
+# ---
+# ---
+# END: virtual/emacs-23
+# ---
+
+
+# ---
+# BEGIN: app-editors/emacs-cvs-23.0.96
+# ---
+# ---
+# END: app-editors/emacs-cvs-23.0.96
+# ---
+
+media-video/vlc stream zvbi httpd id3tag
+
+# ---
+# BEGIN: media-libs/liblastfm-9999
+# ---
+# ---
+# END: media-libs/liblastfm-9999
+# ---
+
+
+# ---
+# BEGIN: media-plugins/kipi-plugins-9999
+# ---
+# ---
+# END: media-plugins/kipi-plugins-9999
+# ---
+
+
+# ---
+# BEGIN: media-sound/amarok-9999
+# ---
+# ---
+# END: media-sound/amarok-9999
+# ---
+
+
+# ---
+# BEGIN: media-plugins/kipi-plugins-9999
+# ---
+# ---
+# END: media-plugins/kipi-plugins-9999
+# ---
+
+
+# ---
+# BEGIN: net-irc/konversation-9999
+# ---
+# ---
+# END: net-irc/konversation-9999
+# ---
+
+
+# ---
+# BEGIN: media-sound/amarok-9999
+# ---
+# ---
+# END: media-sound/amarok-9999
+# ---
+

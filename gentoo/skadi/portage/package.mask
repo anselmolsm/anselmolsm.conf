@@ -39,4 +39,5 @@
 =app-shells/bash-4.0_p24
 
 =net-libs/gnutls-2.8.0
-net-fs/nfs-utils-1.2.0
+=net-fs/nfs-utils-1.2.0
+=dev-libs/boost-1.39.0

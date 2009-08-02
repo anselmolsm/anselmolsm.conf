@@ -1,0 +1,309 @@
+" vim: foldmethod=marker ts=4 sts=0 sw=4 expandtab
+
+" Encodings: {{{
+    set termencoding=utf-8
+    set encoding=utf-8
+    set fileencodings=ucs-bom,utf-8,latin1
+"    set noexpandtab
+    set expandtab
+" }}}
+
+" Environment: {{{
+    set nocompatible
+    set laststatus=2
+    set statusline=%<%f%=\ %l,%c%V\ %m%r%w%y\ U+%04B\ %n\:%P
+
+    " FIXME: Trocar por $HOME
+    set tags=./tags,./../tags,./../../tags,./../../../tags,./../../../../tags;/home/anselmo
+
+    set formatoptions+=Mmc
+    set mouse=a
+    set selectmode+=key
+
+    " store settings from previous edits
+    set viminfo='50,\"300,:100,/20,%,!
+    set comments+=fb:+
+    set t_vb=
+    set noerrorbells
+
+    set terse                   " terse messages
+    set ruler                   " show cursor position
+    set cmdheight=1             " :cmd area size
+    set shortmess=aoOTI         " short messages
+    set showbreak="+"           " show lines that have been broken
+    set nrformats+=alpha        " Increment for alpha'd lists.
+
+    set shiftround
+    set writeany autoread autowrite
+    set tabstop=4               " so tabs look right for us 
+    set softtabstop=4
+    set shiftwidth=4            " so ^T and << are smaller 
+    set report=1                " so we our told whenever we affect more than 1 line 
+    set nomesg                  " because being talked to during an edit is aggravating
+    set autoindent              " so i don't have to tab in 
+
+    set wrap
+    set breakat= 
+    "set wrapmargin=1            " Wrap slightly in from the margin
+    set linebreak
+    set virtualedit=block       " 'Free' editing in visual block mode
+    set dictionary+=/usr/share/dict/words " dictionary
+
+    set splitbelow              " horizontally split below
+    set splitright              " vertically split to the right
+
+    set smartcase               " be sensible when searching 'ic'
+    set incsearch
+    set hlsearch
+    set ttyfast
+    set timeoutlen=500          " Fastish for slow connections
+
+    "set backup
+    set showcmd
+    set title
+    set showmatch
+    set modeline
+" }}}
+
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+map <F5> :%s/\s\+$//<CR>    "<F5> Remove whitespaces from end of line
+
+" Filetypes: {{{
+    filetype indent on
+    filetype plugin on
+
+    " Ignore filenames with any of the following suffices
+    set suffixes+=.aux,.bak,.dvi,.gz,.idx,.log,.ps,.swp,.tar,.class.,~
+    set suffixes+=.o,.bbl,.log,.blg,.ilg,.ind,.toc,.pdf,.lof
+
+    " Suffices when doing 'gf' stuff.
+    set suffixesadd+=.html,.pl,.pm,.tex,.sty,.css,.xml,.xsd,.txt,.ict
+    set suffixesadd+=.shtml,.phtml,.ehtml,.epl,.rss,.rdf,.pod,.asp
+    
+    if has("wildignore") | set wildignore+=&suffixes | endif
+
+    fun! FTCheck()
+        let lines = getline(1)
+        if lines =~? "\[<%]\[#&% ]"
+            setf mason
+        elseif lines =~? "--- #YAML:"
+            setf yaml
+        elseif lines =~? "[%"
+            setf tt2
+        elseif lines =~? "==="
+            setf diff
+        elseif lines =~? "pugs"
+            setf perl6
+        endif
+    endfun
+" }}}
+
+" Color: {{{
+    syntax on
+
+    set bg=dark
+    hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+    hi StatusLine ctermbg=DarkBlue ctermfg=White cterm=NONE,bold
+    hi TabLine ctermbg=Gray ctermfg=DarkGray cterm=NONE
+    hi TabLineSel ctermbg=DarkBlue ctermfg=White cterm=NONE,bold
+    hi TabLineFill ctermbg=DarkGray ctermfg=Gray
+    hi Comment guifg=DarkGreen ctermfg=DarkGreen 
+    hi Constant guifg=Green ctermfg=Green
+    hi MailSubject guifg=Cyan ctermfg=Cyan
+    hi Statement guifg=DarkCyan ctermfg=DarkCyan
+    hi Identifier guifg=Green ctermfg=Green
+    hi Type guifg=Cyan ctermfg=Cyan
+    hi Todo guifg=Blue guibg=DarkBlue cterm=bold ctermfg=White ctermbg=DarkGreen
+    hi Number guifg=DarkMagenta ctermfg=DarkMagenta
+    hi Special guifg=Yellow ctermfg=Yellow
+    hi PreProc guifg=Magenta ctermfg=Magenta
+    hi makeError guibg=Black ctermbg=Black
+    hi masonLoc cterm=bold,underline
+    hi htmlLink ctermfg=White cterm=bold,underline
+    hi perlPOD guifg=DarkGreen ctermfg=DarkGreen 
+    hi podVerbatimLine ctermfg=Brown guifg=DarkYellow
+    hi podCommand guifg=Green ctermfg=Green 
+    hi podCmdText guifg=Green ctermfg=Green 
+    hi WhiteSpaceEOL ctermbg=Red guibg=Red
+" }}}
+syntax on
+colorscheme koehler
+
+" Folding: {{{
+    set foldmethod=marker
+    set foldtext=AutFoldText()
+    set nofoldenable
+
+    function! ExpandTo(xlen,xstr)
+        let hey = a:xstr
+        while strlen(hey) < a:xlen
+            let hey = hey . ' '
+        endwhile
+        return hey
+    endfunction
+
+    function! AutFoldText()
+        let line = getline(v:foldstart)
+        let tail = (v:foldend - v:foldstart + 1) . ' lines'
+        return ExpandTo((winwidth(0) - strlen(tail)), line) . tail
+    endfunction
+
+    set fillchars=stlnc:-,vert:\|,fold:\ ,diff:-
+    if has("win32")
+        hi Folded ctermbg=blue ctermfg=yellow
+    else
+        hi Folded cterm=underline ctermfg=Gray
+    endif
+    autocmd FileType mason,xml,html,perl,pod,css set foldmethod=syntax formatoptions-=o
+    autocmd FileType xml,html,mason,perl,pod syn region FoldMarker start="^\z(\s*\)\S.*{{{\s*$" end="^\z1\S.*}}}\s*$" transparent fold keepend
+    autocmd FileType human syn region FoldMarker start="^[1234567890]" end="^[1234567890]"me=e-1 fold keepend
+" }}}
+
+" Autocommands: {{{
+
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+    autocmd BufEnter *.c,*.h,*.pl,*.py,*.hs,*.pyx  match WhitespaceEOL /\s\+$/
+    autocmd BufNewFile,BufRead *.yaml,*.yml setf yaml
+    autocmd BufNewFile,BufRead *.mas        setf mason
+    autocmd BufNewFile,BufRead *.hta        setf mason
+    autocmd BufNewFile,BufRead *.p6         setf perl6
+    autocmd BufNewFile,BufRead *.tdy        setf perl
+    autocmd BufNewFile,BufRead *            call FTCheck()
+    autocmd BufNewFile,BufRead *.hsc        setf haskell
+    autocmd BufNewFile,BufRead *.hs-drift   setf haskell
+    autocmd BufNewFile,BufRead *.tt         setf tt2
+    autocmd BufNewFile,BufRead *.pod        hi perlPOD ctermfg=Gray 
+    autocmd BufNewFile,BufRead w3m*         set fileencoding=utf-8
+
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
+
+" }}}
+
+" GUI: {{{
+set guifont=DejaVu\ Sans\ Mono\ 9
+"set guioptions-=m
+set guioptions-=r
+set guioptions-=T
+set guioptions-=L
+" }}}
+
+" Cscope: {{{
+if has("cscope")
+set cscopetagorder=0
+set cscopetag
+set nocscopeverbose
+set cscopepathcomp=4
+
+if filereadable("cscope.out")
+    cs add cscope.out
+    elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+endif
+
+" Find this C symbol
+map \s :cscope find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+cab css cscope find s
+
+" Find this global definition:
+map \g :cscope find g <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+cab csg cscope find g
+
+" Find functions called by this function:
+map \d :cscope find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+cab csd cscope find d
+
+" Find functions calling this function:
+map \c :cscope find c <C-R>=expand("<cword>")<CR><CR>:copen<CR> 
+cab csc cscope find c
+
+" Find this text string:
+map \t :cscope find t <C-R>=expand("<cword>")<CR><CR>:copen<CR> 
+cab cst cscope find t
+
+" Change this text string:
+" No map for this
+
+" Find this egrep pattern:
+map \e :cscope find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+cab cse cscope find e
+
+" Find this file:
+map \f :cscope find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
+cab csf cscope find f
+
+" Find files #including this file:
+map \i :cscope find i <C-R>^=expand("<cfile>")$<CR><CR>:copen<CR>
+cab csi cscope find i
+
+endif
+" }}}
+
+" Ruby: {{{
+
+function! Ruby_eval_vsplit() range
+	let src = tempname()
+	let dst = tempname()
+	execute ": " . a:firstline . "," . a:lastline . "w " . src
+	execute ":silent ! ruby " . src . " > " . dst . " 2>&1 "
+	execute ":redraw!"
+	execute ":vsplit"
+	execute "normal \<C-W>l"
+	execute ":e! " . dst
+	execute "normal \<C-W>h"
+endfunction
+
+au BufNewFile,BufRead *.rb vmap <silent> <F7> :call Ruby_eval_vsplit()<cr>
+au BufNewFile,BufRead *.rb nmap <silent> <F7> mzggVG<F7>`z
+au BufNewFile,BufRead *.rb imap <silent> <F7> <ESC><F7>a
+au BufNewFile,BufRead *.rb map <silent> <S-F7> <C-W>l:bw<cr>
+au BufNewFile,BufRead *.rb imap <silent> <S-F7> <ESC><S-F7>a
+
+" FIXME: really necessary?
+"au BufNewFile,BufRead *.rb set nosi
+
+" }}}
+
+" Tab Editing: {{{
+
+nnoremap gf <C-W>gf
+cab e tabe
+
+" }}}
+
+" Specific projects: {{{
+
+" C files => Kernel Style
+" http://www.jukie.net/~bart/blog/20070209172606
+au BufEnter *.c,*.h call CStyle()
+
+fun! CStyle()
+    "set noexpandtab                " use tabse, not spaces
+    set expandtab                " use spaces, not tabs
+    set tabstop=4                  " tabstops of 8
+    set shiftwidth=4               " indents of 8
+    set textwidth=80               " screen in 80 columns wide, wrap at 78
+
+    set autoindent smartindent     " turn on auto/smart indenting
+    set smarttab                   " make <tab> and <backspace> smarter
+    set backspace=eol,start,indent " allow backspacing over indent eol & start
+
+    " forces (re)indentation of a block of code
+    nmap <C-J> vip=
+
+    syn keyword cType uint ubyte ulong uint64_t uint32_t uint16_t uint8_t boolean_t int64_t int32_t int16_t int8_t u_int64_t u_int32_t u_int16_t u_int8_t
+    syn keyword cOperator likely unlikely
+
+    let c_space_errors=1
+    
+    "syn match ErrorLeadSpace /^ \+/      " highlight any leading spaces
+    "syn match ErrorTailSpace / \+$/      " highlight any trailing spaces
+    "match Error80            /\%>80v.\+/ " highlight anything past 80 in red
+
+    set cinoptions=:0,l1,t0,g0,(0
+endfun
+
+
+" }}}
+

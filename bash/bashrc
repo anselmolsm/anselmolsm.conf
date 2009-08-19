@@ -83,6 +83,12 @@ export PATH=$PATH:/home/anselmo/local/bin:/usr/local/bin
 
 export EDITOR=emacs
 shopt -s histappend
-source /etc/bash_completion.d/git
 
-
+if [ -f ~/.git-completion.sh ]; then
+    . ~/.git-completion.sh
+fi
+if [[ ${EUID} == 0 ]] ; then
+    PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W $(__git_ps1 " (%s)")] \$\[\033[00m\] '
+else
+    PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w$(__git_ps1 " (%s)")\$\[\033[00m\] '
+fi

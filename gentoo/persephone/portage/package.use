@@ -42,3 +42,61 @@ media-sound/amarok ipod mp3tunes mtp cdaudio lastfm
 
 net-libs/libsoup -gnome
 dev-util/git tk emacs
+
+# ---
+# BEGIN: app-office/akonadi-server-1.2.0
+# ---
+# ---
+# END: app-office/akonadi-server-1.2.0
+# ---
+
+
+# ---
+# BEGIN: kde-base/kdesdk-meta-4.3.0
+# ---
+# ---
+# END: kde-base/kdesdk-meta-4.3.0
+# ---
+
+media-video/mkvtoolnix lzo
+kde-base/krdc rdp vnc
+
+# ---
+# BEGIN: app-cdr/k3b-1.66.0_alpha2-r1
+# ---
+# ---
+# END: app-cdr/k3b-1.66.0_alpha2-r1
+# ---
+
+
+# ---
+# BEGIN: app-cdr/k3b-1.66.0_alpha2-r1
+# ---
+# ---
+# END: app-cdr/k3b-1.66.0_alpha2-r1
+# ---
+
+app-editors/emacs -alsa -gif -jpeg -png -svg -dbus
+
+# ---
+# BEGIN: kde-base/kfmclient-4.3.1
+# ---
+# ---
+# END: kde-base/kfmclient-4.3.1
+# ---
+
+dev-libs/poppler -abiword
+
+# ---
+# BEGIN: net-irc/konversation-9999
+# ---
+# ---
+# END: net-irc/konversation-9999
+# ---
+
+cross-mingw32/binutils -selinux
+x11-libs/wxGTK -gstreamer -opengl -sdl
+cross-mingw32/w32api -selinux
+cross-mingw32/mingw-runtime -selinux
+cross-mingw32/gcc -selinux -boundschecking -d -gtk -gcj -libffi -mudflap -objc -objc++ -objc-gc -openmp
+app-emulation/wine -gsm -gecko -xinerama -xcomposite -mp3

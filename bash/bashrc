@@ -33,6 +33,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Check if bash_functions is present and include it if possible
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
@@ -55,7 +60,7 @@ export PATH=$PATH:/home/anselmo/local/bin:/usr/local/bin
 
 export EDITOR=emacs
 shopt -s histappend
-source /etc/bash_completion.d/git
+source /etc/bash_completion.d/git.sh
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
 # Show current branch in directories under git version control

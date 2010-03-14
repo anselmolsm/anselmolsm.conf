@@ -19,6 +19,14 @@
 ;(setq version-control t)
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
 
+;; load-path : subdirs
+(normal-top-level-add-subdirs-to-load-path)
+
+;; load espress-mode, javascript mode (including for qml files
+(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
+(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.qml$" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
 
 ;; column limit
 (setq text-mode-hook 'turn-on-auto-fill); automatically auto-fill

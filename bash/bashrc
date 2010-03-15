@@ -52,13 +52,16 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 #I want a huge history!
-export HISTFILESIZE=1000000
-export HISTSIZE=1000000
+export HISTFILESIZE=100000
+export HISTSIZE=100000
+export HISTCONTROL=ignoredups,erasedups,ignoreboth
+export HISTIGNORE=ls,fg,bg
 
 #my installs
-export PATH=$PATH:/home/anselmo/local/bin:/usr/local/bin
+export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin
 
 export EDITOR=emacs
+export LESS="-I -M -R"
 shopt -s histappend
 source /etc/bash_completion.d/git.sh
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh

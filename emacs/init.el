@@ -18,6 +18,7 @@
 (setq make-backup-files t)
 ;(setq version-control t)
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
+(desktop-save-mode 1)
 
 ;; load-path : subdirs
 (normal-top-level-add-subdirs-to-load-path)
@@ -57,7 +58,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "black" :foreground "gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :family "dejavu sans")))))
+ '(default ((t (:stipple nil :background "black" :foreground "gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 70 :width normal :family "dejavu sans")))))
 (transient-mark-mode t)
 (setq search-highlight           t) ; Highlight search object
 (setq query-replace-highlight    t) ; Highlight query object

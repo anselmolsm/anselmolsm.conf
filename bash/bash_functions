@@ -18,3 +18,13 @@ cp_p()
          }
          END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
 }
+
+svn_cleanall()
+{
+    svn st | awk '{print $2}' | xargs rm -rf
+}
+
+git_cleanall()
+{
+    git clean -xf | awk '{print }' | xargs rm -rf
+}

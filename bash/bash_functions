@@ -26,5 +26,5 @@ svn_cleanall()
 
 git_cleanall()
 {
-    git clean -xf | awk '{print }' | xargs rm -rf
+    git clean -xf | awk '{print $3}' | xargs rm -rf
 }

@@ -10,7 +10,7 @@ prepend() { [ -d "$2" ] && eval $1=\"$2\$\{$1:+':'\$$1\}\" && export $1 ; }
 # Other
 # you might want to set a full value for PATH rather than prepend'ing, to make
 # sure the your kde3 path isn't in here.
-prepend PATH /usr/kde/svnbuild/bin
+prepend PATH /usr/kde/trunk/bin
 
 # Qt
 # only set Qt related variables if you compiled Qt on your own
@@ -23,7 +23,7 @@ prepend PATH /usr/kde/svnbuild/bin
 
 
 # KDE
-export KDEDIR=/usr/kde/svnbuild/
+export KDEDIR=/usr/kde/trunk/
 export KDEHOME=$HOME/.kde4
 export KDETMP=/tmp/kde4-$USER
 mkdir -p $KDETMP

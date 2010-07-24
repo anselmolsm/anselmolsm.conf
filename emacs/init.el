@@ -1,5 +1,8 @@
-
+;; Anselmo Lacerda Silveira de Melo
 ;; my .emacs
+
+;; Resources:
+;; .emacs at code.chenca.org
 ;;http://emacs-fu.blogspot.com/
 ;;http://www.emacswiki.org/
 ;;http://www.cs.utah.edu/dept/old/texinfo/emacs18/emacs_20.html

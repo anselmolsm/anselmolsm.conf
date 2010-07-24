@@ -117,7 +117,7 @@
    (list "and" "bool" "compl" "do" "export" "goto" "namespace" "or_eq" "return"
 	 "struct" "try" "using" "xor" "and_eq" "break" "const" "double" "extern"
 	 "if" "new" "private" "short" "switch" "typedef" "virtual" "xor_eq" "asm"
-	 "case" "const_cast" "dyndoamic_cast" "false" "inline" "not" "protected"
+	 "case" "const_cast" "dynamic_cast" "false" "inline" "not" "protected"
 	 "signed" "template" "typeid" "void" "auto" "catch" "continue" "else"
 	 "float" "int" "not_eq" "public" "sizeof" "this" "typename" "volatile"
 	 "bitand" "char" "default" "enum" "for" "long" "operator" "register"

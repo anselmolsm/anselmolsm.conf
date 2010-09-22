@@ -24,6 +24,6 @@ alias up='svn up'
 alias rgrep='grep -R'
 
 #using colors!
-alias grep='grep --colour=auto'
+alias grep='grep --colour=auto --exclude=*.svn-base'
 alias vless='vim -u /usr/share/vim/vim71/macros/less.vim'
 

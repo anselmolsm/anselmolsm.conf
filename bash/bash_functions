@@ -28,3 +28,11 @@ git_cleanall()
 {
     git clean -xf | awk '{print $3}' | xargs rm -rf
 }
+
+update_git_dirs()
+{
+for x in `ls -d *.git`
+do
+    cd yakuake.git && git pull && cd ..
+done
+}

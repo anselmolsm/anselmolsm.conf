@@ -29,10 +29,18 @@ git_cleanall()
     git clean -xf | awk '{print $3}' | xargs rm -rf
 }
 
-update_git_dirs()
+git_update_dirs()
 {
 for x in `ls -d *.git`
 do
-    cd yakuake.git && git pull && cd ..
+    echo '======================================================'
+    echo -n $x': '
+    cd $x && git pull && cd ..
+    echo '======================================================'
 done
+}
+
+git_pruneall()
+{
+    for x in `git branch -a | grep remotes | cut -f 2 -d '/' | uniq`; do git remote prune $x; done
 }

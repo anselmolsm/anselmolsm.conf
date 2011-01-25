@@ -105,7 +105,8 @@
 (require 'cc-mode)
 (setq-default indent-tabs-mode nil)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-(setq-default c-basic-offset 4)
+;(setq-default c-basic-offset 2) ;tabsize
+(setq-default c-basic-offset 4) ;tabsize
 
 (defun fast-uncomment-region ()
   (local-set-key [(control c)(control u)] 'uncomment-region))

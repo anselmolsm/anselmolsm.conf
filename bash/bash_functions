@@ -44,3 +44,18 @@ git_pruneall()
 {
     for x in `git branch -a | grep remotes | cut -f 2 -d '/' | uniq`; do git remote prune $x; done
 }
+
+
+#for x in `ls -d api_*`; do cd $x && for y in tst_*; do if [ -x $y ]; then ./$y; fi; done && cd ..; done | grep FAIL!
+
+qtenv()
+{
+    BUILD=$1
+    if [ $# -eq 0 ]; then
+        echo "You must inform the build name!"
+    else
+        export LD_LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LD_LIBRARY_PATH
+        export LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LIBRARY_PATH
+        export PATH=$HOME/projects/Qt/build/$BUILD/bin:$PATH
+    fi
+}

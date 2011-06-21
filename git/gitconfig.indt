@@ -1,0 +1,8 @@
+[user]
+    name = "Anselmo Lacerda S. de Melo"
+    email = "anselmo.melo@openbossa.org"
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+    interactive = auto

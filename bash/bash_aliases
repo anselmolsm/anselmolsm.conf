@@ -14,11 +14,11 @@ alias ll='ls -lh'
 alias sl='ls'
 
 #svn shortcuts
-alias st='svn st'
-alias srev='svn revert'
-alias sd='svn diff'
-alias ci='svn ci'
-alias up='svn up'
+#alias st='svn st'
+#alias srev='svn revert'
+#alias sd='svn diff'
+#alias ci='svn ci'
+#alias up='svn up'
 
 #I use recursive grep a lot
 alias rgrep='grep -R'

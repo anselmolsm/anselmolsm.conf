@@ -29,14 +29,10 @@ esac
 # Alias definitions.
 
 # Check if bash_aliases is present and include it if possible
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+test -s ~/.bash_aliases && . ~/.bash_aliases || true
 
 # Check if bash_functions is present and include it if possible
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
+test -s ~/.bash_functions && . ~/.bash_functions || true
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
@@ -47,9 +43,7 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+test -s /etc/bash_completion &&  . /etc/bash_completion || true
 
 #I want a huge history!
 export HISTFILESIZE=1000000

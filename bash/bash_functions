@@ -46,8 +46,6 @@ git_pruneall()
 }
 
 
-#for x in `ls -d api_*`; do cd $x && for y in tst_*; do if [ -x $y ]; then ./$y; fi; done && cd ..; done | grep FAIL!
-
 qtenv()
 {
     BUILD=$1
@@ -58,4 +56,9 @@ qtenv()
         export LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LIBRARY_PATH
         export PATH=$HOME/projects/Qt/build/$BUILD/bin:$PATH
     fi
+}
+
+rename_files_wo_spaces()
+{
+	find . -type f | while read i; do [ "$i" != "${i// /_}" ] && mv "$i" "${i// /_}" ;done
 }

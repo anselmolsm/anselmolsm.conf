@@ -5,4 +5,7 @@
 	status = auto
 	diff = auto
 	branch = auto
-    interactive = auto
+[url "git://anongit.kde.org/"]
+        insteadOf = kde:
+[url "git@git.kde.org:"]
+        pushInsteadOf = kde:

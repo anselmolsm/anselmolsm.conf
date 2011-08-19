@@ -54,7 +54,7 @@ export HISTIGNORE=ls,fg,bg
 #my installs
 export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin
 
-export EDITOR=emacs
+export EDITOR=vim
 export LESS="-I -M -R"
 shopt -s histappend
 source /etc/bash_completion.d/git.sh

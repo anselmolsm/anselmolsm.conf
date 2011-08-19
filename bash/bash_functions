@@ -62,3 +62,4 @@ rename_files_wo_spaces()
 {
 	find . -type f | while read i; do [ "$i" != "${i// /_}" ] && mv "$i" "${i// /_}" ;done
 }
+#for i in *; do j=`echo $i | tr ' ' _`; mv "$i" $j; done;

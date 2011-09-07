@@ -51,7 +51,13 @@ qtenv()
     BUILD=$1
     if [ $# -eq 0 ]; then
         echo "You must inform the build name!"
+    elif [ $BUILD == "sdk" ]; then
+	echo "Using QtSDK version"
+        export LD_LIBRARY_PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/lib:$LD_LIBRARY_PATH
+        export LIBRARY_PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/lib:$LIBRARY_PATH
+        export PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/bin:$PATH
     else
+	echo "Using Qt" + $BUILD
         export LD_LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LD_LIBRARY_PATH
         export LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LIBRARY_PATH
         export PATH=$HOME/projects/Qt/build/$BUILD/bin:$PATH

@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export PATH=/opt/icecream/bin:$PATH
+
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
 # ... and ignore same sucessive entries.
@@ -54,10 +56,10 @@ export HISTIGNORE=ls,fg,bg
 #my installs
 export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin
 
-export EDITOR=vim
+export EDITOR="emacs -nw"
 export LESS="-I -M -R"
 shopt -s histappend
-source /etc/bash_completion.d/git.sh
+source /etc/bash_completion.d/git
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
 # Show current branch in directories under git version control

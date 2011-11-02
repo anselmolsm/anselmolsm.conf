@@ -69,3 +69,22 @@ rename_without_spaces()
 	for i in *; do j=`echo $i | tr ' ' _`; mv "$i" $j; done;
 }
 
+qttemplate()
+{
+    if [ $# -eq 0 ]; then
+        FILE="main.cpp"
+    else
+        FILE=$1
+    fi
+
+    echo "#include <QtCore>
+#include <QtGui>
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+
+
+    return app.exec();
+}" > $FILE
+}

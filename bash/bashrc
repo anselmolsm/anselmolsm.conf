@@ -70,5 +70,5 @@ else
 fi
 
 # makes the prompt show the current state of the git workdir
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
+#export GIT_PS1_SHOWDIRTYSTATE=true
+#export GIT_PS1_SHOWUNTRACKEDFILES=true

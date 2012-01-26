@@ -56,12 +56,21 @@ qtenv()
         export LD_LIBRARY_PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/lib:$LD_LIBRARY_PATH
         export LIBRARY_PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/lib:$LIBRARY_PATH
         export PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/bin:$PATH
+        export QMAKESPEC=linux-g++-64
     else
 	echo "Using Qt" + $BUILD
         export LD_LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LD_LIBRARY_PATH
         export LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LIBRARY_PATH
         export PATH=$HOME/projects/Qt/build/$BUILD/bin:$PATH
+        export QMAKESPEC=linux-g++-64
     fi
+}
+
+wk2_env()
+{
+    export QML_IMPORT_PATH=$HOME/projects/Qt/build/5/imports/:$HOME/projects/Qt/webkit.git/WebKitBuild/Release/imports
+    export QML_PLUGIN_PATH=$HOME/projects/Qt/build/5/plugins/:$HOME/projects/Qt/webkit.git/WebKitBuild/Release/
+    export PATH=$HOME/projects/Qt/webkit.git/WebKitBuild/Release/bin/:$PATH
 }
 
 rename_without_spaces()

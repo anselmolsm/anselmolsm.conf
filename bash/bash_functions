@@ -49,28 +49,26 @@ git_pruneall()
 qtenv()
 {
     BUILD=$1
+    MY_QT_PATH=$HOME/projects/Qt/build/$BUILD
     if [ $# -eq 0 ]; then
         echo "You must inform the build name!"
-    elif [ $BUILD == "sdk" ]; then
-	echo "Using QtSDK version"
-        export LD_LIBRARY_PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/lib:$LD_LIBRARY_PATH
-        export LIBRARY_PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/lib:$LIBRARY_PATH
-        export PATH=$HOME/local/QtSDK/Desktop/Qt/474/gcc/bin:$PATH
-        export QMAKESPEC=linux-g++-64
-    else
-	echo "Using Qt" + $BUILD
-        export LD_LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LD_LIBRARY_PATH
-        export LIBRARY_PATH=$HOME/projects/Qt/build/$BUILD/lib:$LIBRARY_PATH
-        export PATH=$HOME/projects/Qt/build/$BUILD/bin:$PATH
-        export QMAKESPEC=linux-g++-64
     fi
+	echo "Using Qt" $BUILD
+    export LD_LIBRARY_PATH=$MY_QT_PATH/lib:$LD_LIBRARY_PATH
+    export LIBRARY_PATH=$MY_QT_PATH/lib:$LIBRARY_PATH
+    export QML_IMPORT_PATH=$MY_QT_PATH/imports/
+    export QML_PLUGIN_PATH=$MY_QT_PATH/plugins/
+    export PATH=$MY_QT_PATH/bin:$PATH
 }
 
 wk2_env()
 {
-    export QML_IMPORT_PATH=$HOME/projects/Qt/build/5/imports/:$HOME/projects/Qt/webkit.git/WebKitBuild/Release/imports
-    export QML_PLUGIN_PATH=$HOME/projects/Qt/build/5/plugins/:$HOME/projects/Qt/webkit.git/WebKitBuild/Release/
-    export PATH=$HOME/projects/Qt/webkit.git/WebKitBuild/Release/bin/:$PATH
+    WEBKIT_BUILD_PATH=$HOME/projects/Qt/webkit.git/WebKitBuild/Release/
+    qtenv 5
+    echo "Using WebKit Release"
+    export QML_IMPORT_PATH=$QML_IMPORT_PATH:$WEBKIT_BUILD_PATH/imports
+    export QML_PLUGIN_PATH=$QML_PLUGIN_PATH:$WEBKIT_BUILD_PATH
+    export PATH=$WEBKIT_BUILD_PATH/bin/:$PATH
 }
 
 rename_without_spaces()

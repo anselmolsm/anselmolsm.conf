@@ -50,10 +50,14 @@ qtenv()
 {
     BUILD=$1
     MY_QT_PATH=$HOME/projects/Qt/build/$BUILD
+    if [ $BUILD == '5' ]; then
+        MY_QT_PATH=$MY_QT_PATH/qtbase/
+    fi
     if [ $# -eq 0 ]; then
         echo "You must inform the build name!"
     fi
 	echo "Using Qt" $BUILD
+    export QTDIR=$MY_QT_PATH
     export LD_LIBRARY_PATH=$MY_QT_PATH/lib:$LD_LIBRARY_PATH
     export LIBRARY_PATH=$MY_QT_PATH/lib:$LIBRARY_PATH
     export QML_IMPORT_PATH=$MY_QT_PATH/imports/

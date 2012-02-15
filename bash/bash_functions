@@ -49,20 +49,26 @@ git_pruneall()
 qtenv()
 {
     BUILD=$1
-    MY_QT_PATH=$HOME/projects/Qt/build/$BUILD
+    QTBUILDDIR=$HOME/projects/Qt/build/$BUILD
+    QTSRC=$HOME/projects/Qt/qt
     if [ $BUILD == '5' ]; then
-        MY_QT_PATH=$MY_QT_PATH/qtbase/
+        QTBUILDDIR=$QTBUILDDIR/qtbase/
+        QTSRC=${QTSRC}5
     fi
+    QTSRC=${QTSRC}.git
+
     if [ $# -eq 0 ]; then
         echo "You must inform the build name!"
     fi
 	echo "Using Qt" $BUILD
-    export QTDIR=$MY_QT_PATH
-    export LD_LIBRARY_PATH=$MY_QT_PATH/lib:$LD_LIBRARY_PATH
-    export LIBRARY_PATH=$MY_QT_PATH/lib:$LIBRARY_PATH
-    export QML_IMPORT_PATH=$MY_QT_PATH/imports/
-    export QML_PLUGIN_PATH=$MY_QT_PATH/plugins/
-    export PATH=$MY_QT_PATH/bin:$PATH
+    export QTDIR=$QTBUILDDIR
+    export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+    export LIBRARY_PATH=$QTDIR/lib:$LIBRARY_PATH
+    export QML_IMPORT_PATH=$QTDIR/imports/
+    export QML_PLUGIN_PATH=$QTDIR/plugins/
+    export PATH=$QTDIR/bin:$PATH
+    alias qs='cd $QTSRC'
+    alias qb='cd $QTDIR/../'
 }
 
 wk2_env()

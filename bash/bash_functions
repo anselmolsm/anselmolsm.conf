@@ -67,8 +67,18 @@ qtenv()
     export QML_IMPORT_PATH=$QTDIR/imports/
     export QML_PLUGIN_PATH=$QTDIR/plugins/
     export PATH=$QTDIR/bin:$PATH
-    alias qs='cd $QTSRC'
-    alias qb='cd $QTDIR/../'
+}
+
+qs()
+{
+    qtenv 5
+    cd $QTSRC/$1
+}
+
+qb()
+{
+    qtenv 5
+    cd $QTDIR/../$1
 }
 
 wk2_env()
@@ -104,4 +114,22 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }" > $FILE
+}
+
+buildqt5()
+{
+    qtenv 5
+    qb
+    $QTSRC/configure -developer-build -no-gtkstyle -opensource --confirm-license -no-pch
+    cd $QTDIR && make -j 100 && make install
+    cd $QTDIR/../qtjsbackend && make -j 100 && make install
+    cd $QTDIR/../qtscript && make -j 100 && make install
+    cd $QTDIR/../qtdeclarative && make -j 100 && make install
+}
+
+syncprofile()
+{
+    MODULE=$1
+    qtenv 5
+    syncqt $QTSRC/$MODULE/sync.profile
 }

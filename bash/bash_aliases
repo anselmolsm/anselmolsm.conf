@@ -29,3 +29,6 @@ alias vless='vim -u /usr/share/vim/vim71/macros/less.vim'
 
 #I always forget 'time' when I wanto to measure build time..
 alias make='time make'
+
+#archlinux: always use yaourt
+alias pacman='yaourt'

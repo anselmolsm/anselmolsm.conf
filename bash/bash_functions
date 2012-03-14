@@ -21,6 +21,13 @@ cp_p()
          END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
 }
 
+## Useful to rename lots of files with spaces in their names
+rename_without_spaces()
+{
+	for i in *; do j=`echo $i | tr ' ' _`; mv "$i" $j; done;
+}
+
+
 # svn stuff
 ## clean all files not under version control
 svn_cleanall()
@@ -47,12 +54,6 @@ do
     cd $x && git pull && cd ..
     echo '======================================================'
 done
-}
-
-# to be removed: git remote update --prune does the same
-git_pruneall()
-{
-    for x in `git branch -a | grep remotes | cut -f 2 -d '/' | uniq`; do git remote prune $x; done
 }
 
 # Qt stuff
@@ -104,10 +105,6 @@ wk2_env()
     export PATH=$WEBKIT_BUILD_PATH/bin/:$PATH
 }
 
-rename_without_spaces()
-{
-	for i in *; do j=`echo $i | tr ' ' _`; mv "$i" $j; done;
-}
 
 ## Creates a standard main.cpp file for Qt apps
 qttemplate()
@@ -128,17 +125,6 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }" > $FILE
-}
-
-buildqt5()
-{
-    qtenv 5
-    qb
-    $QTSRC/configure -developer-build -no-gtkstyle -opensource --confirm-license -no-pch
-    cd $QTDIR && make -j 100 && make install
-    cd $QTDIR/../qtjsbackend && make -j 100 && make install
-    cd $QTDIR/../qtscript && make -j 100 && make install
-    cd $QTDIR/../qtdeclarative && make -j 100 && make install
 }
 
 ## Runs syncqt in a given Qt 5 module

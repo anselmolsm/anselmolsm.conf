@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# misc
+## Progress bar for cp
 cp_p()
 {
    strace -q -ewrite cp -ax -- "${1}" "${2}" 2>&1 \
@@ -19,16 +21,23 @@ cp_p()
          END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
 }
 
+# svn stuff
+## clean all files not under version control
 svn_cleanall()
 {
     svn st | awk '{print $2}' | xargs rm -rf
 }
 
+# git stuff
+## wipe all files and directories not under version control
 git_cleanall()
 {
-    git clean -xf | awk '{print $3}' | xargs rm -rf
+    git clean -xfd
+    git clean -Xfd
 }
 
+## I use the convention of naming directories with the ".git" prefix.
+## I use this function to update them.
 git_update_dirs()
 {
 for x in `ls -d *.git`
@@ -40,12 +49,14 @@ do
 done
 }
 
+# to be removed: git remote update --prune does the same
 git_pruneall()
 {
     for x in `git branch -a | grep remotes | cut -f 2 -d '/' | uniq`; do git remote prune $x; done
 }
 
-
+# Qt stuff
+## sets up enviroment to use custom builds of Qt
 qtenv()
 {
     BUILD=$1
@@ -68,19 +79,21 @@ qtenv()
     export QML_PLUGIN_PATH=$QTDIR/plugins/
     export PATH=$QTDIR/bin:$PATH
 }
-
+## cd Qt 5 source dir, optionally to a submodule
 qs()
 {
     qtenv 5
     cd $QTSRC/$1
 }
 
+## cd Qt 5 build dir, optionally to a submodule
 qb()
 {
     qtenv 5
     cd $QTDIR/../$1
 }
 
+## webkit2+Qt5 enviroment
 wk2_env()
 {
     WEBKIT_BUILD_PATH=$HOME/projects/Qt/webkit.git/WebKitBuild/Release/
@@ -96,6 +109,7 @@ rename_without_spaces()
 	for i in *; do j=`echo $i | tr ' ' _`; mv "$i" $j; done;
 }
 
+## Creates a standard main.cpp file for Qt apps
 qttemplate()
 {
     if [ $# -eq 0 ]; then
@@ -127,6 +141,7 @@ buildqt5()
     cd $QTDIR/../qtdeclarative && make -j 100 && make install
 }
 
+## Runs syncqt in a given Qt 5 module
 syncprofile()
 {
     MODULE=$1

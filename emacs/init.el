@@ -12,6 +12,8 @@
 ;;http://as760.http.sasm3.net/textbooks/emacs/emacs_20.html
 ;;http://www.emacswiki.org/cgi-bin/wiki/sourcepair.el
 ;;http://geosoft.no/development/emacs.html
+(autoload 'python-mode "python-mode.el" "Python mode." t)
+(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; don't show startup messages

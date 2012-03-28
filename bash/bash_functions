@@ -102,6 +102,8 @@ wk2_env()
     echo "Using WebKit Release"
     export QML_IMPORT_PATH=$QML_IMPORT_PATH:$WEBKIT_BUILD_PATH/imports
     export QML_PLUGIN_PATH=$QML_PLUGIN_PATH:$WEBKIT_BUILD_PATH
+    export PKG_CONFIG_PATH=$WEBKIT_BUILD_PATH/lib/pkgconfig/
+    export LIBRARY_PATH=$WEBKIT_BUILD_PATH/lib
     export PATH=$WEBKIT_BUILD_PATH/bin/:$PATH
 }
 

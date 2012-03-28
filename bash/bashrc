@@ -45,7 +45,8 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-test -s /etc/bash_completion &&  . /etc/bash_completion || true
+#test -s /etc/bash_completion &&  . /etc/bash_completion || true
+test -s /usr/share/git/completion/git-completion.bash && . /usr/share/git/completion/git-completion.bash || true
 
 #I want a huge history!
 export HISTFILESIZE=1000000
@@ -59,8 +60,6 @@ export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin
 export EDITOR="emacs -nw"
 export LESS="-I -M -R"
 shopt -s histappend
-source /etc/bash_completion.d/git
-[[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
 # Show current branch in directories under git version control
 if [[ ${EUID} == 0 ]] ; then

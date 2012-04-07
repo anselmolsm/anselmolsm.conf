@@ -5,9 +5,23 @@
 	status = auto
 	diff = auto
 	branch = auto
-	interactive = auto
+	ui = auto
 
 [url "git://anongit.kde.org/"]
 	insteadOf = kde:
 [url "git@git.kde.org:"]
 	pushInsteadOf = kde:
+[status]
+	showuntrackedfiles = all
+[push]
+	default = tracking
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	stat = true
+[core]
+	pager = less -FRSX
+[alias]
+	st = status
+	co = checkout

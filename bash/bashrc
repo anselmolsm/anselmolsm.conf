@@ -5,7 +5,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export PATH=/opt/icecream/bin:$PATH
+# use macports' GNU coreutils instead of BSD on Mac OS.
+# use icecream's gcc and g++
+export PATH=/opt/local/libexec/gnubin/:/opt/icecream/bin:$PATH
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
@@ -37,16 +39,22 @@ test -s ~/.bash_aliases && . ~/.bash_aliases || true
 test -s ~/.bash_functions && . ~/.bash_functions || true
 
 # enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+if which dircolors &> /dev/null; then
+    if [ "$TERM" != "dumb" ]; then
+        eval "`dircolors -b`"
+        alias ls='ls --color=auto'
+    fi
 fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-#test -s /etc/bash_completion &&  . /etc/bash_completion || true
+test -s /etc/bash_completion &&  . /etc/bash_completion || true
+# bash completion on ArchLinux
 test -s /usr/share/git/completion/git-completion.bash && . /usr/share/git/completion/git-completion.bash || true
+# bash completion on Mac OS
+test -s /opt/local/etc/bash_completion && . /opt/local/etc/bash_completion || true
 
 #I want a huge history!
 export HISTFILESIZE=1000000
@@ -71,3 +79,7 @@ fi
 # makes the prompt show the current state of the git workdir
 #export GIT_PS1_SHOWDIRTYSTATE=true
 #export GIT_PS1_SHOWUNTRACKEDFILES=true
+
+# MacPorts Installer addition on 2012-04-16_at_11:14:18: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.

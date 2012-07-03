@@ -33,7 +33,8 @@
 ;;(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
 
 (require 'python)
-
+(setq tab-width 4)
+(setq-default py-indent-offset 4)
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))

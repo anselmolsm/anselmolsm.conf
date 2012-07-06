@@ -91,7 +91,11 @@ qs()
 qb()
 {
     qtenv 5
-    cd $QTDIR/../$1
+    DIR=$QTDIR/../$1
+    if [ $# -gt 0 ] && [ ! -d $DIR ]; then
+        mkdir $DIR
+    fi
+    cd $DIR
 }
 
 ## webkit2+Qt5 enviroment

@@ -29,3 +29,6 @@ alias make='time make'
 
 #archlinux: always use yaourt
 alias pacman='yaourt'
+
+#git achievements
+alias git="git-achievements"

@@ -25,3 +25,5 @@
 [alias]
 	st = status
 	co = checkout
+[achievement]
+	upload = true

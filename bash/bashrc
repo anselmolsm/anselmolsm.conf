@@ -7,7 +7,7 @@
 
 # use macports' GNU coreutils instead of BSD on Mac OS.
 # use icecream's gcc and g++
-export PATH=/opt/local/libexec/gnubin/:/opt/icecream/bin:$PATH
+export PATH=/opt/local/libexec/gnubin/:/usr/lib/icecream/bin:$PATH
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups

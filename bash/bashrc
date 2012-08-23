@@ -52,6 +52,7 @@ fi
 # sources /etc/bash.bashrc).
 test -s /etc/bash_completion &&  . /etc/bash_completion || true
 # bash completion on ArchLinux
+test -s /usr/share/git/completion/git-prompt.sh && . /usr/share/git/completion/git-prompt.sh || true
 test -s /usr/share/git/completion/git-completion.bash && . /usr/share/git/completion/git-completion.bash || true
 # bash completion on Mac OS
 test -s /opt/local/etc/bash_completion && . /opt/local/etc/bash_completion || true

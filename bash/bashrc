@@ -64,7 +64,7 @@ export HISTCONTROL=ignoredups,erasedups,ignoreboth
 export HISTIGNORE=ls,fg,bg
 
 #my installs
-export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin:$HOME/projects/git-achievements/
+export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin:$HOME/projects/git-achievements/:$HOME/local/arcanist/arcanist/bin
 
 export EDITOR="emacs -nw"
 export LESS="-I -M -R"

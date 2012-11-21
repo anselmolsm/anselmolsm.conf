@@ -13,6 +13,7 @@
 ;;http://www.emacswiki.org/cgi-bin/wiki/sourcepair.el
 ;;http://geosoft.no/development/emacs.html
 ;;http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/
+;;http://www.emacswiki.org/emacs/CommentingCode
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; don't show startup messages
@@ -39,11 +40,11 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
-;; load espress-mode, javascript mode (including for qml files
-(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
-(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.qml$" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
+; load js2 mode for javascript and QML files
+(autoload 'js2-mode "js2" "Start js2" t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.qml$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
 ;; column limit
 (setq text-mode-hook 'turn-on-auto-fill); automatically auto-fill
@@ -74,7 +75,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "black" :foreground "gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :family "dejavu sans mono")))))
+ '(default ((t (:stipple nil :background "black" :foreground "gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :family "source code pro")))))
 (transient-mark-mode t)
 (setq search-highlight           t) ; Highlight search object
 (setq query-replace-highlight    t) ; Highlight query object
@@ -99,17 +100,13 @@
 
 ;; keyboard shortcuts
 (global-set-key [\C-tab] 'bs-cycle-next) ; Ctrl-Tab and Ctrl-Shift-Tab cycle through buffers
-;(global-set-key [\C-\S-tab] 'bs-cycle-previous)
+(global-set-key [\C-\S-iso-lefttab] 'bs-cycle-previous)
 (global-set-key "\M-c" 'compile)
-;(global-set-key "\C-x\C-e" 'compile)
 (global-set-key "\C-g" 'goto-line)
 (global-set-key [f5] 'delete-trailing-whitespace)
-;(global-set-key "\C-z" 'undo)
-;(global-set-key "\C-c" 'copy-region-as-kill);;copy
-;(global-set-key "\C-v" 'yank);;paste
 (global-set-key [delete] 'delete-char)
-;(global-set-key [home] 'beginning-of-buffer)
-;(global-set-key [end] 'end-of-buffer)
+(global-set-key [\C-home] 'beginning-of-buffer)
+(global-set-key [\C-end] 'end-of-buffer)
 (global-set-key [f6] 'ff-find-other-file)
 (global-set-key [f9] 'kill-buffer)
 
@@ -117,11 +114,25 @@
 (require 'cc-mode)
 (setq-default indent-tabs-mode nil)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-;(setq-default c-basic-offset 2) ;tabsize
 (setq-default c-basic-offset 4) ;tabsize
 
 (defun fast-uncomment-region ()
   (local-set-key [(control c)(control u)] 'uncomment-region))
+
+;;http://www.emacswiki.org/emacs/CommentingCode
+;; Original idea from
+;; http://www.opensubscriber.com/message/emacs-devel@gnu.org/10971693.html
+(defun comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command.
+        If no region is selected and current line is not blank and we are not at the end of the line,
+        then comment current line.
+        Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(global-set-key "\M-;" 'comment-dwim-line)
 
 
 ;; C++ autocompletion

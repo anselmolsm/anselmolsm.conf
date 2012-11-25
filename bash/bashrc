@@ -5,21 +5,25 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# use macports' GNU coreutils instead of BSD on Mac OS.
-# use icecream's gcc and g++
-export PATH=/opt/local/libexec/gnubin/:/usr/lib/icecream/bin:$PATH
+## history settings
+# I want a huge history!
+export HISTFILESIZE=10000000
+export HISTSIZE=10000000
 
-# don't put duplicate lines in the history. See bash(1) for more options
-export HISTCONTROL=ignoredups
-# ... and ignore same sucessive entries.
-export HISTCONTROL=ignoreboth
+# avoid duplicate lines in the history.
+# ignore same successive entries
+export HISTCONTROL=ignoredups,erasedups,ignoreboth
+# exclude ls, fg, bg lines
+export HISTIGNORE=ls,fg,bg
 
+## bash features
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+# auto correct typos while using cd
+shopt -s cdspell
+# append lines to the history file
+shopt -s histappend
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -30,13 +34,13 @@ xterm*|rxvt*)
     ;;
 esac
 
-# Alias definitions.
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+export LESS="-I -M -R"
 
-# Check if bash_aliases is present and include it if possible
-test -s ~/.bash_aliases && . ~/.bash_aliases || true
-
-# Check if bash_functions is present and include it if possible
-test -s ~/.bash_functions && . ~/.bash_functions || true
+# use macports' GNU coreutils instead of BSD on Mac OS.
+# use icecream's gcc and g++
+export PATH=/opt/local/libexec/gnubin/:/usr/lib/icecream/bin:$PATH
 
 # enable color support of ls and also add handy aliases
 if which dircolors &> /dev/null; then
@@ -46,29 +50,26 @@ if which dircolors &> /dev/null; then
     fi
 fi
 
+# I don't like nano
+if [ -s /usr/bin/emacs ]; then
+   export EDITOR="emacs -nw"
+else
+   export EDITOR="vim"
+fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+## Alias definitions.
+test -s ~/.bash_aliases && . ~/.bash_aliases || true
+
+## bash functions
+test -s ~/.bash_functions && . ~/.bash_functions || true
+
+## Bash completion
 test -s /etc/bash_completion &&  . /etc/bash_completion || true
 # bash completion on ArchLinux
 test -s /usr/share/git/completion/git-prompt.sh && . /usr/share/git/completion/git-prompt.sh || true
 test -s /usr/share/git/completion/git-completion.bash && . /usr/share/git/completion/git-completion.bash || true
 # bash completion on Mac OS
 test -s /opt/local/etc/bash_completion && . /opt/local/etc/bash_completion || true
-
-#I want a huge history!
-export HISTFILESIZE=1000000
-export HISTSIZE=1000000
-export HISTCONTROL=ignoredups,erasedups,ignoreboth
-export HISTIGNORE=ls,fg,bg
-
-#my installs
-export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin:$HOME/projects/git-achievements/:$HOME/local/arcanist/bin
-
-export EDITOR="emacs -nw"
-export LESS="-I -M -R"
-shopt -s histappend
 
 # Show current branch in directories under git version control
 if [[ ${EUID} == 0 ]] ; then
@@ -77,9 +78,14 @@ else
     PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w $(declare -F __git_ps1 &> /dev/null && __git_ps1 "(%s)")\$\[\033[00m\] '
 fi
 
-# makes the prompt show the current state of the git workdir
-#export GIT_PS1_SHOWDIRTYSTATE=true
-#export GIT_PS1_SHOWUNTRACKEDFILES=true
+#my installs
+export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin
+
+# git-achievements - https://github.com/icefox/git-achievements
+export PATH=$PATH:$HOME/projects/git-achievements/
+
+# Use arcanist
+export PATH=$PATH:$HOME/local/arcanist/bin
 
 # MacPorts Installer addition on 2012-04-16_at_11:14:18: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH

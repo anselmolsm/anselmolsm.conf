@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # misc
 ## Progress bar for cp
@@ -24,7 +24,7 @@ cp_p()
 ## Useful to rename lots of files with spaces in their names
 rename_without_spaces()
 {
-	for i in *; do j=`echo $i | tr ' ' _`; mv "$i" $j; done;
+    for i in *; do j=`echo $i | tr ' ' _`; mv "$i" $j; done;
 }
 
 
@@ -43,100 +43,11 @@ git_cleanall()
     git clean -Xfd
 }
 
-## I use the convention of naming directories with the ".git" prefix.
-## I use this function to update them.
-git_update_dirs()
+# update tags
+git_tags()
 {
-for x in `ls -d *.git`
-do
-    echo '======================================================'
-    echo -n $x': '
-    cd $x && git pull && cd ..
-    echo '======================================================'
-done
+    git tag -l | xargs git tag -d
+    git fetch --tags
 }
 
-# Qt stuff
-## sets up enviroment to use custom builds of Qt
-qtenv()
-{
-    BUILD=$1
-    QTBUILDDIR=$HOME/projects/Qt/build/$BUILD
-    QTSRC=$HOME/projects/Qt/qt
-    if [ $BUILD == '5' ]; then
-        QTBUILDDIR=$QTBUILDDIR/qtbase/
-        QTSRC=${QTSRC}5
-    fi
-    QTSRC=${QTSRC}.git
-
-    if [ $# -eq 0 ]; then
-        echo "You must inform the build name!"
-    fi
-	echo "Using Qt" $BUILD
-    export QTDIR=$QTBUILDDIR
-    export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
-    export LIBRARY_PATH=$QTDIR/lib:$LIBRARY_PATH
-    export QML_IMPORT_PATH=$QTDIR/imports/
-    export QML_PLUGIN_PATH=$QTDIR/plugins/
-    export PATH=$QTDIR/bin:$PATH
-}
-## cd Qt 5 source dir, optionally to a submodule
-qs()
-{
-    qtenv 5
-    cd $QTSRC/$1
-}
-
-## cd Qt 5 build dir, optionally to a submodule
-qb()
-{
-    qtenv 5
-    DIR=$QTDIR/../$1
-    if [ $# -gt 0 ] && [ ! -d $DIR ]; then
-        mkdir $DIR
-    fi
-    cd $DIR
-}
-
-## webkit2+Qt5 enviroment
-wk2_env()
-{
-    WEBKIT_BUILD_PATH=$HOME/projects/Qt/webkit.git/WebKitBuild/Release/
-    qtenv 5
-    echo "Using WebKit Release"
-    export QML_IMPORT_PATH=$QML_IMPORT_PATH:$WEBKIT_BUILD_PATH/imports
-    export QML_PLUGIN_PATH=$QML_PLUGIN_PATH:$WEBKIT_BUILD_PATH
-    export PKG_CONFIG_PATH=$WEBKIT_BUILD_PATH/lib/pkgconfig/
-    export LIBRARY_PATH=$WEBKIT_BUILD_PATH/lib
-    export PATH=$WEBKIT_BUILD_PATH/bin/:$PATH
-}
-
-
-## Creates a standard main.cpp file for Qt apps
-qttemplate()
-{
-    if [ $# -eq 0 ]; then
-        FILE="main.cpp"
-    else
-        FILE=$1
-    fi
-
-    echo "#include <QtCore>
-#include <QtGui>
-
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
-
-
-    return app.exec();
-}" > $FILE
-}
-
-## Runs syncqt in a given Qt 5 module
-syncprofile()
-{
-    MODULE=$1
-    qtenv 5
-    syncqt $QTSRC/$MODULE/sync.profile
-}
+test -s ~/.bash_qtfunctions && source ~/.bash_qtfunctions || true

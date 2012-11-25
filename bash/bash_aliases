@@ -1,34 +1,28 @@
-#for security reasons
+# for security reasons
 alias rm='rm -i'
 alias mv='mv -i'
 
-#simplifying common commands
+# simplifying common commands
 alias gvim='gvim -p'
 alias v='vim'
-alias umount='sudo umount'
 alias ll='ls -lh'
-alias sl='ls'
 alias nw='emacs -nw'
 
-#svn shortcuts
-#alias st='svn st'
-#alias srev='svn revert'
-#alias sd='svn diff'
-#alias ci='svn ci'
-#alias up='svn up'
+# boring typo
+alias sl='ls'
 
-#I use recursive grep a lot
+# recursive grep in emacs is rgrep ;)
 alias rgrep='grep -R'
 
-#using colors!
+# using colors!
 alias grep='grep --colour=auto --exclude=*.svn-base'
 alias vless='vim -u /usr/share/vim/vim71/macros/less.vim'
 
-#I always forget 'time' when I wanto to measure build time..
+# I always forget 'time' when I wanna measure build time..
 alias make='time make'
 
-#archlinux: always use yaourt
+# archlinux: always use yaourt
 alias pacman='yaourt'
 
-#git achievements
+# git achievements
 alias git="git-achievements"

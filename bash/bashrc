@@ -79,7 +79,7 @@ else
 fi
 
 #my installs
-export PATH=$PATH:/home/anselmo/bin:/home/anselmo/local/bin:/usr/local/bin
+export PATH=$HOME/local/bin:/usr/local/bin:$PATH
 
 # git-achievements - https://github.com/icefox/git-achievements
 export PATH=$PATH:$HOME/projects/git-achievements/

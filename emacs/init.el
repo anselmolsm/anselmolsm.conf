@@ -29,10 +29,6 @@
 ;; off because it made emacs startup deadly slow
 ;(normal-top-level-add-subdirs-to-load-path)
 
-;; python-mode - not used now
-;;(autoload 'python-mode "python-mode.el" "Python mode." t)
-;;(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
-
 (require 'python)
 (setq tab-width 4)
 (setq-default py-indent-offset 4)

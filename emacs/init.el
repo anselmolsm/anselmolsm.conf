@@ -36,6 +36,10 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
+; archlinux PKGBUILD mode
+(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
+
 ; load js2 mode for javascript and QML files
 (autoload 'js2-mode "js2" "Start js2" t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

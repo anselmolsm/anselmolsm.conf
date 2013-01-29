@@ -31,6 +31,16 @@
 ;; off because it made emacs startup deadly slow
 ;(normal-top-level-add-subdirs-to-load-path)
 
+; web-mode - http://web-mode.org/
+(require 'web-mode)
+(autoload 'web-mode "web-mode" "Start webmode" t)
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+
 (require 'python)
 (setq tab-width 4)
 (setq-default py-indent-offset 4)

@@ -25,7 +25,7 @@
 (setq make-backup-files t)
 ;(setq version-control t)
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
-;(desktop-save-mode 1)
+(desktop-save-mode 1)
 
 ;; load-path : subdirs
 ;; off because it made emacs startup deadly slow

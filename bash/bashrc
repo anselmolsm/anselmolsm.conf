@@ -95,3 +95,5 @@ PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 export PATH
+
+export NODE_PATH=/usr/lib/node_modules

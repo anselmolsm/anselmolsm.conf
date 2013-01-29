@@ -15,6 +15,8 @@
 ;;http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/
 ;;http://www.emacswiki.org/emacs/CommentingCode
 
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; don't show startup messages
 (setq inhibit-startup-message t)

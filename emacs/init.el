@@ -25,7 +25,12 @@
 (setq make-backup-files t)
 ;(setq version-control t)
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
+
+; Sessions
 (desktop-save-mode 1)
+(setq desktop-path '("~/.emacs.d/"))
+(setq desktop-dirname "~/.emacs.d/")
+(setq desktop-base-file-name "emacs-desktop")
 
 ;; load-path : subdirs
 ;; off because it made emacs startup deadly slow

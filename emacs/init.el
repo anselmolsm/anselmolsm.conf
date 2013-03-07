@@ -36,7 +36,11 @@
 ;; load-path : subdirs
 ;; off because it made emacs startup deadly slow
 ;(normal-top-level-add-subdirs-to-load-path)
-(add-to-list 'load-path "~/.emacs.d/")
+
+;; git diff
+(require 'git-gutter)
+(global-git-gutter-mode t)
+(setq git-gutter:always-show-gutter t)
 
 ; web-mode - http://web-mode.org/
 (require 'web-mode)

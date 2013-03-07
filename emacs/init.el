@@ -15,10 +15,16 @@
 ;;http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/
 ;;http://www.emacswiki.org/emacs/CommentingCode
 
+; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Using package.el, add marmalade repo
+(require 'package)
+(add-to-list 'package-archives
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+(package-initialize)
+;; load stuff from these paths
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-
-; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; don't show startup messages
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message t)

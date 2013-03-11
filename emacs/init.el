@@ -22,9 +22,11 @@
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
+
 ;; load stuff from these paths
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ;; don't show startup messages
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message t)
@@ -42,6 +44,11 @@
 ;; load-path : subdirs
 ;; off because it made emacs startup deadly slow
 ;(normal-top-level-add-subdirs-to-load-path)
+
+;; auto-complete
+;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
+(require 'auto-complete-config)
+(ac-config-default)
 
 ;; git diff
 (require 'git-gutter)

@@ -18,9 +18,9 @@
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Using package.el, add marmalade repo
 (require 'package)
-(add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 ;; load stuff from these paths
 (add-to-list 'load-path "~/.emacs.d/")

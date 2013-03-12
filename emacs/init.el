@@ -45,6 +45,11 @@
 ;; off because it made emacs startup deadly slow
 ;(normal-top-level-add-subdirs-to-load-path)
 
+;; project mode
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+
 ;; auto-complete
 ;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (require 'auto-complete-config)

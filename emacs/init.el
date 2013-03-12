@@ -14,6 +14,12 @@
 ;;http://geosoft.no/development/emacs.html
 ;;http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/
 ;;http://www.emacswiki.org/emacs/CommentingCode
+;;http://marmalade-repo.org/
+;;http://elpa.gnu.org/
+;;http://melpa.milkbox.net/
+;;https://github.com/syohex/emacs-git-gutter
+;;http://cx4a.org/software/auto-complete/
+;;https://github.com/bbatsov/projectile
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Using package.el, add marmalade repo

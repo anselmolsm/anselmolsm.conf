@@ -25,6 +25,10 @@ shopt -s cdspell
 # append lines to the history file
 shopt -s histappend
 
+# Keeping bash history in sync on disk and between multiple terminals
+# http://briancarper.net/blog/248/
+export PROMPT_COMMAND="history -a; history -n"
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)

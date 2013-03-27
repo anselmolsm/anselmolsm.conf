@@ -21,6 +21,7 @@
 ;;http://cx4a.org/software/auto-complete/
 ;;https://github.com/bbatsov/projectile
 ;;https://github.com/illusori/emacs-flymake
+;;https://github.com/cataska/qml-mode
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Using package.el, add marmalade repo
@@ -102,10 +103,13 @@
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
-; load js2 mode for javascript and QML files
+; load qml- mode for QML files
+(autoload 'qml-mode "qml" "Start qml" t)
+(add-to-list 'auto-mode-alist '("\\.qml$" . qml-mode))
+
+;; load js2 for javascript and json files
 (autoload 'js2-mode "js2" "Start js2" t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.qml$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
 ;; column limit

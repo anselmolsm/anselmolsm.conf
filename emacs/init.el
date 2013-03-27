@@ -20,6 +20,7 @@
 ;;https://github.com/syohex/emacs-git-gutter
 ;;http://cx4a.org/software/auto-complete/
 ;;https://github.com/bbatsov/projectile
+;;https://github.com/illusori/emacs-flymake
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Using package.el, add marmalade repo
@@ -40,6 +41,16 @@
 (setq make-backup-files t)
 ;(setq version-control t)
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
+
+;Flymake
+(require 'flymake)
+;; Let's run 8 checks at once instead.
+(setq flymake-max-parallel-syntax-checks 8)
+;; use tmp dir
+(setq flymake-run-in-place nil)
+;; I want to see at most the first 4 errors for a line.
+(setq flymake-number-of-errors-to-display 4)
+
 
 ; Sessions
 (desktop-save-mode 1)

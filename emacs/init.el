@@ -112,6 +112,10 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
+;; load edje-mode for edc files
+(autoload 'edje-mode "edje-mode" "Start edje" t)
+(add-to-list 'auto-mode-alist '("\\.edc$" . edje-mode))
+
 ;; column limit
 (setq text-mode-hook 'turn-on-auto-fill); automatically auto-fill
 (setq-default default-fill-column 100)	; 72

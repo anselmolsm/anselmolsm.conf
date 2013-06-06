@@ -230,3 +230,11 @@
 (iswitchb-mode)
 
 (modify-frame-parameters nil '((wait-for-wm . nil)))
+
+; a variant of the kernel coding style
+(c-add-style
+ "linux4"
+ '("linux"
+  (indent-tabs-mode . nil)
+  (tab-width . 8)
+  (c-basic-offset . 4)))

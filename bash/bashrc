@@ -86,13 +86,13 @@ fi
 PATH=$HOME/local/bin:/usr/local/bin:$PATH
 
 # git-achievements - https://github.com/icefox/git-achievements
-PATH=$PATH:$HOME/projects/git-achievements/
+PATH=$PATH:$HOME/git-achievements/
 
 # Use arcanist
 PATH=$PATH:$HOME/local/arcanist/bin
 
 # Ruby gems
-PATH=/home/anselmo/.gem/ruby/1.9.1/bin:$PATH
+PATH=/home/anselmo/.gem/ruby/2.0.0/bin:$PATH
 
 # MacPorts Installer addition on 2012-04-16_at_11:14:18: adding an appropriate PATH variable for use with MacPorts.
 PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH

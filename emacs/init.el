@@ -116,6 +116,10 @@
 (autoload 'edje-mode "edje-mode" "Start edje" t)
 (add-to-list 'auto-mode-alist '("\\.edc$" . edje-mode))
 
+;; load cmake-mode for CMakeLists.txt
+(autoload 'cmake-mode "cmake-mode" "Start cmake" t)
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt$" . cmake-mode))
+
 ;; column limit
 (setq text-mode-hook 'turn-on-auto-fill); automatically auto-fill
 (setq-default default-fill-column 100)	; 72

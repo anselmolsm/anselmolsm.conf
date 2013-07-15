@@ -78,6 +78,13 @@
 (global-git-gutter-mode t)
 (setq git-gutter:always-show-gutter t)
 
+;; integrated git blame
+(require 'mo-git-blame)
+(autoload 'mo-git-blame-file "mo-git-blame" nil t)
+(autoload 'mo-git-blame-current "mo-git-blame" nil t)
+(global-set-key [?\C-c ?g ?c] 'mo-git-blame-current)
+(global-set-key [?\C-c ?g ?f] 'mo-git-blame-file)
+
 ; web-mode - http://web-mode.org/
 (require 'web-mode)
 (autoload 'web-mode "web-mode" "Start webmode" t)

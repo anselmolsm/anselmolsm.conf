@@ -24,6 +24,8 @@
 ;;https://github.com/cataska/qml-mode
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
+(server-start)
+
 ;; Using package.el, add marmalade repo
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -156,7 +158,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "black" :foreground "gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :family "source code pro")))))
+ '(default ((t (:stipple nil :background "black" :foreground "gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :family "source code pro")))))
 (transient-mark-mode t)
 (setq search-highlight           t) ; Highlight search object
 (setq query-replace-highlight    t) ; Highlight query object
@@ -245,11 +247,3 @@
 (iswitchb-mode)
 
 (modify-frame-parameters nil '((wait-for-wm . nil)))
-
-; a variant of the kernel coding style
-(c-add-style
- "linux4"
- '("linux"
-  (indent-tabs-mode . nil)
-  (tab-width . 8)
-  (c-basic-offset . 4)))

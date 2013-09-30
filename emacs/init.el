@@ -179,6 +179,8 @@
 (setq-default indent-tabs-mode nil)
 
 ;; show matching parentheses
+(require 'paren)
+(setq show-paren-style 'parenthesis)
 (show-paren-mode t)
 
 ;; keyboard shortcuts

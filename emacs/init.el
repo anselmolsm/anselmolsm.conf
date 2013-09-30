@@ -256,3 +256,10 @@
 (iswitchb-mode)
 
 (modify-frame-parameters nil '((wait-for-wm . nil)))
+
+; Show file path in the frame title
+; http://emacsredux.com/blog/2013/04/07/display-visited-files-path-in-the-frame-title/
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))

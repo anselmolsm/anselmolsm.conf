@@ -183,6 +183,13 @@
 (setq show-paren-style 'parenthesis)
 (show-paren-mode t)
 
+;; Automatic character pairing
+; http://emacsredux.com/blog/2013/03/29/automatic-electric-character-pairing/
+(electric-pair-mode t)
+
+;; Automatic indentation
+;(electric-indent-mode t)
+
 ;; keyboard shortcuts
 (global-set-key [\C-tab] 'bs-cycle-next) ; Ctrl-Tab and Ctrl-Shift-Tab cycle through buffers
 (global-set-key [\C-\S-iso-lefttab] 'bs-cycle-previous)

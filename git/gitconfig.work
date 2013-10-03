@@ -1,6 +1,6 @@
 [user]
-    name = "Anselmo L. S. Melo"
-    email = "anselmo.melo@openbossa.org"
+	name = Anselmo L. S. Melo
+	email = anselmo.melo@intel.com
 [color]
 	status = auto
 	diff = auto
@@ -21,8 +21,12 @@
 	stat = true
 [core]
 	pager = less -FRSX
+	excludesfile = /home/anselmo/.gitignore_global
 [alias]
 	st = status
 	co = checkout
+    cp = cherry-pick
+    ru = remote update --prune
+#    post-review = !post-review --guess-summary --guess-description --username=amelo --parent=master --tracking-branch=anonupstream/master    
 [achievement]
 	upload = true

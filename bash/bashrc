@@ -75,6 +75,9 @@ test -s /usr/share/git/completion/git-completion.bash && . /usr/share/git/comple
 # bash completion on Mac OS
 test -s /opt/local/etc/bash_completion && . /opt/local/etc/bash_completion || true
 
+# project
+test -s ~/.bash_project && . ~/.bash_project || true
+
 # Show current branch in directories under git version control
 if [[ ${EUID} == 0 ]] ; then
     PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W $(declare -F __git_ps1 &> /dev/null && __git_ps1 "(%s)")\$\[\033[00m\] '

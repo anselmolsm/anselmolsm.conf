@@ -63,6 +63,8 @@
 (setq desktop-dirname "~/.emacs.d/")
 (setq desktop-base-file-name "emacs-desktop")
 
+(setq shell-file-name "/bin/bash")
+
 ;; load-path : subdirs
 ;; off because it made emacs startup deadly slow
 ;(normal-top-level-add-subdirs-to-load-path)

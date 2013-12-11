@@ -24,7 +24,9 @@
 ;;https://github.com/cataska/qml-mode
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
-(server-start)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; Using package.el, add marmalade repo
 (require 'package)

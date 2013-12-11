@@ -22,11 +22,14 @@
 [core]
 	pager = less -FRSX
 	excludesfile = /home/anselmo/.gitignore_global
+    editor = emacs -nw
 [alias]
 	st = status
 	co = checkout
     cp = cherry-pick
     ru = remote update --prune
+    rv = remote -v
+    ca = commit --am
 #    post-review = !post-review --guess-summary --guess-description --username=amelo --parent=master --tracking-branch=anonupstream/master    
 [achievement]
 	upload = true

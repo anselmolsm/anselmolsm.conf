@@ -360,3 +360,21 @@
     (call-interactively 'find-tag)))
  (substitute-key-definition 'find-tag 'my-find-tag  global-map)
 
+(semantic-mode 1)
+(require 'cedet)
+(require 'semantic/tag)
+(require 'semantic/lex)
+
+(global-set-key [f8] 'semantic-ia-fast-jump) ;; jump to definition.
+(global-set-key [M-f8]                       ;; jump back
+                (lambda ()
+                  (interactive)
+                  (if (ring-empty-p (oref semantic-mru-bookmark-ring ring))
+                     (error "Semantic Bookmark ring is currently empty"))
+                  (let* ((ring (oref semantic-mru-bookmark-ring ring))
+                         (alist (semantic-mrub-ring-to-assoc-list ring))
+                         (first (cdr (car alist))))
+                    (if (semantic-equivalent-tag-p (oref first tag)
+                                                   (semantic-current-tag))
+                        (setq first (cdr (car (cdr alist)))))
+                    (semantic-mrub-switch-tags first))))

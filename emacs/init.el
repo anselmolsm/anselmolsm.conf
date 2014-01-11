@@ -55,14 +55,19 @@
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
 
 ;Flymake
-(require 'flymake)
+;(require 'flymake)
 ;; Let's run 8 checks at once instead.
-(setq flymake-max-parallel-syntax-checks 8)
+;(setq flymake-max-parallel-syntax-checks 8)
 ;; use tmp dir
-(setq flymake-run-in-place nil)
+;(setq flymake-run-in-place nil)
 ;; I want to see at most the first 4 errors for a line.
-(setq flymake-number-of-errors-to-display 4)
+;(setq flymake-number-of-errors-to-display 4)
 
+(require 'flycheck)
+(add-hook 'c-mode-init-hook #'global-flycheck-mode)
+(add-hook 'c++-mode-init-hook #'global-flycheck-mode)
+(add-hook 'js2-mode-hook #'global-flycheck-mode)
+(require 'flycheck-tip)
 
 ; Sessions
 (desktop-save-mode 1)
@@ -108,7 +113,7 @@
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 
-(require 'csharp-mode)
+;(require 'csharp-mode)
 (autoload 'csharp-mode "csharp-mode" "C# Mode." t)
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-mode))
 
@@ -218,6 +223,7 @@
 (setq-default indent-tabs-mode nil)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (setq-default c-basic-offset 4) ;tabsize
+(define-key c-mode-base-map (kbd "C-c C-f") 'flycheck-tip-cycle)
 
 (defun fast-uncomment-region ()
   (local-set-key [(control c)(control u)] 'uncomment-region))

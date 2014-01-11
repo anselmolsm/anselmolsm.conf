@@ -339,3 +339,23 @@
 
 (global-set-key (kbd "C-c r")  'rename-file-and-buffer)
 
+; cscope
+(require 'xcscope)
+
+(global-set-key (kbd "M-.") 'cscope-find-this-symbol)
+
+(defun my-find-tag(&optional prefix)
+  "union of `find-tag' alternatives. decides upon major-mode"
+  (interactive "P")
+  (if (and (boundp 'cscope-minor-mode)
+           cscope-minor-mode)
+      (progn
+        (ring-insert find-tag-marker-ring (point-marker))
+        (call-interactively
+         (if prefix
+             'cscope-find-this-symbol
+           'cscope-find-global-definition-no-prompting
+           )))
+    (call-interactively 'find-tag)))
+ (substitute-key-definition 'find-tag 'my-find-tag  global-map)
+

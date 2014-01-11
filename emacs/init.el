@@ -38,12 +38,19 @@
 ;; load stuff from these paths
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.emacs.d/elpa/")
+
+;; init yasnippet
+(add-to-list 'load-path  "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;; don't show startup messages
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message t)
 ;; change where backups are stored
 (setq make-backup-files t)
+
 ;(setq version-control t)
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
 

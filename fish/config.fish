@@ -58,3 +58,19 @@ alias git="git-achievements"
 set -Ux fish_user_paths /usr/lib/icecream/bin $HOME/local/bin /usr/local/bin $PATH
 set -Ux fish_user_paths $PATH $HOME/git-achievements/
 set -Ux fish_user_paths $PATH /home/anselmo/.gem/ruby/2.0.0/bin
+
+set -Ux USE_CCACHE 1
+set -Ux CCACHE_DIR .ccache
+set -Ux EDITOR vim
+
+if [ (xrandr | grep DP-4 | cut -f 2 -d " ") = "disconnected" ]
+      setxkbmap -model thinkpad60 -layout br
+end
+
+set -Ux LESS_TERMCAP_mb (printf "\e[1;31m")
+set -Ux LESS_TERMCAP_md (printf "\e[1;31m")
+set -Ux LESS_TERMCAP_me (printf "\e[0m")
+set -Ux LESS_TERMCAP_so (printf "\e[1;44;33m")
+set -Ux LESS_TERMCAP_se (printf "\e[0m")
+set -Ux LESS_TERMCAP_ue (printf "\e[0m")
+set -Ux LESS_TERMCAP_us (printf "\e[1;32m")

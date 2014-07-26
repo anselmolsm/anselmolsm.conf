@@ -54,6 +54,8 @@
 ;(setq version-control t)
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
 
+(windmove-default-keybindings 'meta)
+
 ;Flymake
 ;(require 'flymake)
 ;; Let's run 8 checks at once instead.

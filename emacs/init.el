@@ -342,6 +342,8 @@
 
 (global-set-key (kbd "C-c r")  'rename-file-and-buffer)
 
+;(global-set-key (kbd "M-.") 'my-find-tag)
+
 ; cscope
 (require 'xcscope)
 
@@ -364,6 +366,8 @@
 
 (semantic-mode 1)
 (require 'cedet)
+(require 'semantic/ia)
+(require 'semantic/bovine/gcc)
 (require 'semantic/tag)
 (require 'semantic/lex)
 
@@ -380,3 +384,18 @@
                                                    (semantic-current-tag))
                         (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
+
+(setq lazy-highlight-cleanup nil)
+(setq lazy-highlight-initial-delay 0)
+(setq lazy-highlight-max-at-a-time nil)
+
+(global-semantic-decoration-mode 1)
+(global-semantic-idle-local-symbol-highlight-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+(global-semantic-stickyfunc-mode 1)
+(global-semantic-highlight-func-mode 1)
+(global-semantic-idle-breadcrumbs-mode 1)
+
+;; disable cedet idle completions mode due conflict whit auto-complete
+(global-semantic-idle-completions-mode 0)
+

@@ -1,0 +1,44 @@
+[user]
+	name = Anselmo L. S. Melo
+    email = "anselmolsm@gmail.com"
+
+[include]
+    path = /home/anselmo/.gitconfig.local
+
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	ui = auto
+[status]
+	showuntrackedfiles = all
+[push]
+	default = tracking
+[pull]
+	ff = only
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	stat = true
+[core]
+	pager = less -FRSX
+	excludesfile = /home/anselmo/.gitignore_global
+	editor = vim
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+        cp = cherry-pick
+        ru = remote update --prune
+        rv = remote -v
+	ri = rebase -i
+	ra = rebase --abort
+	rc = rebase --continue
+	ca = commit --am
+	cs = commit --am --no-edit
+	gg = grep --break --heading -n
+	glog = log --pretty=oneline --topo-order --graph --abbrev-commit
+
+[init]
+	templatedir = ~/.git_template

@@ -9,7 +9,7 @@ tramp
 .\#*
 
 #vim backup files
-*.s[a-w][a-z]
+*.sw[a-z]
 *.un~
 Session.vim
 .netrwhist

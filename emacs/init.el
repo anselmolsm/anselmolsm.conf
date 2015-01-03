@@ -36,7 +36,6 @@
 (package-initialize)
 
 ;; load stuff from these paths
-(add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
@@ -148,9 +147,16 @@
 (autoload 'cmake-mode "cmake-mode" "Start cmake" t)
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt$" . cmake-mode))
 
+;; show limiter
+(require 'fill-column-indicator)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(setq fci-rule-width 1)
+(setq fci-rule-color "darkblue")
+(global-fci-mode 1)
+
 ;; column limit
 (setq text-mode-hook 'turn-on-auto-fill); automatically auto-fill
-(setq-default default-fill-column 100)	; 72
+(setq-default default-fill-column 80)	; 72
 (setq default-comment-column 40)	;
 (setq ask-about-buffer-names t)		; be helpful
 (setq completion-auto-help t)		;    with buffer names

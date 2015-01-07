@@ -23,13 +23,13 @@ end
 #no welcome message
 set fish_greeting ""
 
-set -U EDITOR nw
+set -U EDITOR enw
 
 
 set -U NODE_fish_user_paths /usr/lib/node_modules
 
 ##aliases####
-alias rgrep='grep -R'
+alias rgrep='grep -R --exclude="\.git\/"'
 # for security reasons
 alias rm='rm -i'
 alias mv='mv -i'
@@ -38,7 +38,7 @@ alias mv='mv -i'
 alias gvim='gvim -p'
 alias v='vim'
 alias ll='ls -lh'
-alias nw='emacs -nw'
+alias enw='emacs -nw'
 
 # boring typo
 alias sl='ls'
@@ -57,11 +57,12 @@ alias git="git-achievements"
 
 set -Ux fish_user_paths /usr/lib/icecream/bin $HOME/local/bin /usr/local/bin $PATH
 set -Ux fish_user_paths $PATH $HOME/git-achievements/
-set -Ux fish_user_paths $PATH /home/anselmo/.gem/ruby/2.0.0/bin
+set -Ux fish_user_paths $PATH /home/anselmo/work/project-scripts/
+set -Ux fish_user_paths $PATH /home/anselmo/.gem/ruby/2.0.0/
 
 set -Ux USE_CCACHE 1
-set -Ux CCACHE_DIR .ccache
 set -Ux EDITOR vim
+set -Ux CCACHE_DIR .ccache
 
 if [ (xrandr | grep DP-4 | cut -f 2 -d " ") = "disconnected" ]
       setxkbmap -model thinkpad60 -layout br

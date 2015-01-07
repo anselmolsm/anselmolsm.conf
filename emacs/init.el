@@ -20,7 +20,6 @@
 ;;https://github.com/syohex/emacs-git-gutter
 ;;http://cx4a.org/software/auto-complete/
 ;;https://github.com/bbatsov/projectile
-;;https://github.com/illusori/emacs-flymake
 ;;https://github.com/cataska/qml-mode
 
 ; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -54,15 +53,6 @@
 ;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
 
 (windmove-default-keybindings 'meta)
-
-;Flymake
-;(require 'flymake)
-;; Let's run 8 checks at once instead.
-;(setq flymake-max-parallel-syntax-checks 8)
-;; use tmp dir
-;(setq flymake-run-in-place nil)
-;; I want to see at most the first 4 errors for a line.
-;(setq flymake-number-of-errors-to-display 4)
 
 (require 'flycheck)
 (add-hook 'c-mode-init-hook #'global-flycheck-mode)

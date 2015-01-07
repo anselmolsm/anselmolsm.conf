@@ -231,7 +231,7 @@
 (require 'cc-mode)
 (setq-default indent-tabs-mode nil)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-(setq-default c-basic-offset 4) ;tabsize
+(setq-default c-basic-offset 2) ;tabsize
 (define-key c-mode-base-map (kbd "C-c C-f") 'flycheck-tip-cycle)
 
 (defun fast-uncomment-region ()
@@ -347,8 +347,6 @@
           (set-visited-file-name new-name t t)))))))
 
 (global-set-key (kbd "C-c r")  'rename-file-and-buffer)
-
-;(global-set-key (kbd "M-.") 'my-find-tag)
 
 ; cscope
 (require 'xcscope)

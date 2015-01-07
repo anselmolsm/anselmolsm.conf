@@ -42,3 +42,14 @@
 
 [init]
 	templatedir = ~/.git_template
+
+[url "git://anongit.kde.org/"]
+	insteadOf = kde:
+[url "git@git.kde.org:"]
+	pushInsteadOf = kde:
+
+[diff]
+	renameLimit = 30000
+
+[achievement]
+	upload = true

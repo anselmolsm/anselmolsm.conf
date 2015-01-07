@@ -40,9 +40,9 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; init yasnippet
-(add-to-list 'load-path  "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
+;(add-to-list 'load-path  "~/.emacs.d/plugins/yasnippet")
+;(require 'yasnippet)
+;(yas-global-mode 1)
 
 ;; don't show startup messages
 (setq inhibit-startup-message t)

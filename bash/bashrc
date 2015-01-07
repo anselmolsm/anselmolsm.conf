@@ -12,7 +12,7 @@ export HISTSIZE=10000000
 
 # avoid duplicate lines in the history.
 # ignore same successive entries
-export HISTCONTROL=ignoredups,erasedups,ignoreboth
+export HISTCONTROL=ignoredups:erasedups:ignoreboth
 # exclude ls, fg, bg lines
 export HISTIGNORE=ls,fg,bg
 
@@ -104,3 +104,4 @@ PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export PATH
 
 export NODE_PATH=/usr/lib/node_modules
+source ~/.fzf.bash

@@ -90,8 +90,8 @@
 
 ;; auto-complete
 ;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
-(require 'auto-complete-config)
-(ac-config-default)
+;;(require 'auto-complete-config)
+;;(ac-config-default)
 
 ;; git diff
 (require 'git-gutter)

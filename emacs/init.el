@@ -22,11 +22,6 @@
 ;;https://github.com/bbatsov/projectile
 ;;https://github.com/cataska/qml-mode
 
-; General stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
 ;; Using package.el, add marmalade repo
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -34,14 +29,28 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
+;; Install missing packages
+(defvar my-packages '(server flycheck projectile git-gutter web-mode
+                             fill-column-indicator recentf xcscope
+                             pkgbuild-mode qml-mode cmake-mode cedet js2-mode
+                             mo-git-blame
+                             ))
+
+(package-initialize)
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+;;
+
+
+;; Start emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; load stuff from these paths
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/elpa/")
-
-;; init yasnippet
-;(add-to-list 'load-path  "~/.emacs.d/plugins/yasnippet")
-;(require 'yasnippet)
-;(yas-global-mode 1)
 
 ;; don't show startup messages
 (setq inhibit-startup-message t)
@@ -49,16 +58,10 @@
 ;; change where backups are stored
 (setq make-backup-files t)
 
-;(setq version-control t)
-;(setq backup-directory-alist (quote ((".* .~/.emacs_backups/"))))
-
 (windmove-default-keybindings 'meta)
 
 (require 'flycheck)
-(add-hook 'c-mode-init-hook #'global-flycheck-mode)
-(add-hook 'c++-mode-init-hook #'global-flycheck-mode)
-(add-hook 'js2-mode-hook #'global-flycheck-mode)
-(require 'flycheck-tip)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ; Sessions
 (desktop-save-mode 1)
@@ -68,20 +71,11 @@
 
 (setq shell-file-name "/bin/bash")
 
-;; load-path : subdirs
-;; off because it made emacs startup deadly slow
-;(normal-top-level-add-subdirs-to-load-path)
-
 ;; project mode
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-indexing-method 'native)
-
-;; auto-complete
-;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
-;;(require 'auto-complete-config)
-;;(ac-config-default)
 
 ;; git diff
 (require 'git-gutter)
@@ -115,16 +109,18 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-; archlinux PKGBUILD mode
+                                       ; archlinux PKGBUILD mode
+(require 'pkgbuild-mode)
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode)) auto-mode-alist))
 
-; load qml- mode for QML files
+;; load qml- mode for QML files
+(require 'qml-mode)
 (autoload 'qml-mode "qml-mode" "Start qml" t)
 (add-to-list 'auto-mode-alist '("\\.qml$" . qml-mode))
 
 ;; load js2 for javascript and json files
+(require 'js2-mode)
 (autoload 'js2-mode "js2-mode" "Start js2" t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
@@ -134,6 +130,7 @@
 (add-to-list 'auto-mode-alist '("\\.edc$" . edje-mode))
 
 ;; load cmake-mode for CMakeLists.txt
+(require 'cmake-mode)
 (autoload 'cmake-mode "cmake-mode" "Start cmake" t)
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt$" . cmake-mode))
 
@@ -173,7 +170,19 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "black" :foreground "gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :family "source code pro")))))
+ '(default ((t (:stipple nil
+                         :background "black"
+                         :foreground "gray"
+                         :inverse-video nil
+                         :box nil
+                         :strike-through nil
+                         :overline nil
+                         :underline nil
+                         :slant normal
+                         :weight normal
+                         :height 80
+                         :width normal
+                         :family "source code pro")))))
 (transient-mark-mode t)
 (setq search-highlight           t) ; Highlight search object
 (setq query-replace-highlight    t) ; Highlight query object
@@ -202,9 +211,6 @@
 ; http://emacsredux.com/blog/2013/03/29/automatic-electric-character-pairing/
 (electric-pair-mode t)
 
-;; Automatic indentation
-;(electric-indent-mode t)
-
 ;; keyboard shortcuts
 (global-set-key [\C-tab] 'bs-cycle-next) ; Ctrl-Tab and Ctrl-Shift-Tab cycle through buffers
 (global-set-key [\C-\S-iso-lefttab] 'bs-cycle-previous)
@@ -222,7 +228,6 @@
 (setq-default indent-tabs-mode nil)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (setq-default c-basic-offset 2) ;tabsize
-(define-key c-mode-base-map (kbd "C-c C-f") 'flycheck-tip-cycle)
 
 (defun fast-uncomment-region ()
   (local-set-key [(control c)(control u)] 'uncomment-region))
@@ -390,6 +395,4 @@
 (global-semantic-highlight-func-mode 1)
 (global-semantic-idle-breadcrumbs-mode 1)
 
-;; disable cedet idle completions mode due conflict whit auto-complete
-(global-semantic-idle-completions-mode 0)
-
+;;; init.el ends here

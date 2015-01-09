@@ -29,14 +29,15 @@
 	st = status
 	co = checkout
 	ci = commit
-        cp = cherry-pick
-        ru = remote update --prune
-        rv = remote -v
+    cp = cherry-pick
+    ru = remote update --prune
+    rv = remote -v
 	ri = rebase -i
 	ra = rebase --abort
 	rc = rebase --continue
 	ca = commit --am
 	cs = commit --am --no-edit
+    cf = commit --fixup
 	gg = grep --break --heading -n
 	glog = log --pretty=oneline --topo-order --graph --abbrev-commit
 

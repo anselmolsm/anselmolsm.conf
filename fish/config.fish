@@ -49,9 +49,6 @@ alias vless='vim -u /usr/share/vim/vim71/macros/less.vim'
 # I always forget 'time' when I wanna measure build time..
 alias make='time make'
 
-# archlinux: always use yaourt
-alias pacman='yaourt'
-
 # git achievements
 alias git="git-achievements"
 
@@ -67,6 +64,10 @@ set -Ux CCACHE_DIR .ccache
 if [ (xrandr | grep DP-4 | cut -f 2 -d " ") = "disconnected" ]
       setxkbmap -model thinkpad60 -layout br
 end
+
+# requires source-highlight
+set -Ux LESSOPEN "| /usr/bin/src-hilite-lesspipe.sh %s"
+set -Ux LESS ' -R '
 
 set -Ux LESS_TERMCAP_mb (printf "\e[1;31m")
 set -Ux LESS_TERMCAP_md (printf "\e[1;31m")

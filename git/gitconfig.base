@@ -25,6 +25,7 @@
 	pager = less -FRSX
 	excludesfile = /home/anselmo/.gitignore_global
 	editor = vim
+	autocrlf = input
 [alias]
 	st = status
 	co = checkout

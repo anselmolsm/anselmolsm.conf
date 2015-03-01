@@ -197,9 +197,13 @@
 (setq visible-bell nil) ; disable visible bell
 (fset 'yes-or-no-p 'y-or-n-p) ; because I can write only y/n instead of yes/no...
 
-;; highlight trailing whitespace
-(setq-default show-trailing-whitespace t)
-(setq-default default-indicate-empty-lines t)
+
+;;  whitespace
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
+;; only spaces, never tabs.
 (setq-default indent-tabs-mode nil)
 
 ;; show matching parentheses

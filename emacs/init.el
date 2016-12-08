@@ -56,7 +56,7 @@
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message t)
 ;; change where backups are stored
-(setq make-backup-files t)
+(setq make-backup-files 0)
 
 (windmove-default-keybindings 'meta)
 
@@ -124,6 +124,7 @@
 (autoload 'js2-mode "js2-mode" "Start js2" t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(setq-default js2-basic-offset 2) ;tabsize
 
 ;; load edje-mode for edc files
 (autoload 'edje-mode "edje-mode" "Start edje" t)
@@ -231,7 +232,7 @@
 (require 'cc-mode)
 (setq-default indent-tabs-mode nil)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-(setq-default c-basic-offset 2) ;tabsize
+(setq-default c-basic-offset 4) ;tabsize
 
 (defun fast-uncomment-region ()
   (local-set-key [(control c)(control u)] 'uncomment-region))

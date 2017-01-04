@@ -25,7 +25,6 @@ set fish_greeting ""
 
 set -U EDITOR enw
 
-
 set -U NODE_fish_user_paths /usr/lib/node_modules
 
 ##aliases####
@@ -52,18 +51,12 @@ alias make='time make'
 # git achievements
 alias git="git-achievements"
 
-set -Ux fish_user_paths /usr/lib/icecream/bin $HOME/local/bin /usr/local/bin $PATH
-set -Ux fish_user_paths $PATH $HOME/git-achievements/
-set -Ux fish_user_paths $PATH /home/anselmo/work/project-scripts/
-set -Ux fish_user_paths $PATH /home/anselmo/.gem/ruby/2.0.0/
+set -Ux fish_user_paths $HOME/local/bin /usr/local/bin $PATH
+set -Ux fish_user_paths $PATH $HOME/git-achievements
 
 set -Ux USE_CCACHE 1
 set -Ux EDITOR vim
 set -Ux CCACHE_DIR .ccache
-
-if [ (xrandr | grep DP-4 | cut -f 2 -d " ") = "disconnected" ]
-      setxkbmap -model thinkpad60 -layout br
-end
 
 # requires source-highlight
 set -Ux LESSOPEN "| /usr/bin/src-hilite-lesspipe.sh %s"

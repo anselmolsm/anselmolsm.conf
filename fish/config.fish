@@ -23,8 +23,6 @@ end
 #no welcome message
 set fish_greeting ""
 
-set -U EDITOR enw
-
 set -U NODE_fish_user_paths /usr/lib/node_modules
 
 ##aliases####
@@ -51,21 +49,20 @@ alias make='time make'
 # git achievements
 alias git="git-achievements"
 
-set -Ux fish_user_paths $HOME/local/bin /usr/local/bin $PATH
-set -Ux fish_user_paths $PATH $HOME/git-achievements
+set -x fish_user_paths $HOME/local/bin /usr/local/bin $HOME/git-achievements $PATH
 
-set -Ux USE_CCACHE 1
-set -Ux EDITOR vim
-set -Ux CCACHE_DIR .ccache
+set -x USE_CCACHE 1
+set -x EDITOR vim
+set -x CCACHE_DIR .ccache
 
 # requires source-highlight
-set -Ux LESSOPEN "| /usr/bin/src-hilite-lesspipe.sh %s"
-set -Ux LESS ' -R '
+set -x LESSOPEN "| /usr/bin/src-hilite-lesspipe.sh %s"
+set -x LESS ' -R '
 
-set -Ux LESS_TERMCAP_mb (printf "\e[1;31m")
-set -Ux LESS_TERMCAP_md (printf "\e[1;31m")
-set -Ux LESS_TERMCAP_me (printf "\e[0m")
-set -Ux LESS_TERMCAP_so (printf "\e[1;44;33m")
-set -Ux LESS_TERMCAP_se (printf "\e[0m")
-set -Ux LESS_TERMCAP_ue (printf "\e[0m")
-set -Ux LESS_TERMCAP_us (printf "\e[1;32m")
+set -x LESS_TERMCAP_mb (printf "\e[1;31m")
+set -x LESS_TERMCAP_md (printf "\e[1;31m")
+set -x LESS_TERMCAP_me (printf "\e[0m")
+set -x LESS_TERMCAP_so (printf "\e[1;44;33m")
+set -x LESS_TERMCAP_se (printf "\e[0m")
+set -x LESS_TERMCAP_ue (printf "\e[0m")
+set -x LESS_TERMCAP_us (printf "\e[1;32m")

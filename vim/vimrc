@@ -35,15 +35,16 @@
 
     set shiftround
     set writeany autoread autowrite
-    set tabstop=4               " so tabs look right for us 
+    set tabstop=4               " so tabs look right for us
     set softtabstop=4
-    set shiftwidth=4            " so ^T and << are smaller 
-    set report=1                " so we our told whenever we affect more than 1 line 
-    set nomesg                  " because being talked to during an edit is aggravating
-    set autoindent              " so i don't have to tab in 
+    set shiftwidth=4            " so ^T and << are smaller
+    set report=1                " so we our told whenever we affect more than 1 line
+    "nvim does not accept nomesg
+    "set nomesg                  " because being talked to during an edit is aggravating
+    set autoindent              " so i don't have to tab in
 
     set wrap
-    set breakat= 
+    set breakat=
     "set wrapmargin=1            " Wrap slightly in from the margin
     set linebreak
     set virtualedit=block       " 'Free' editing in visual block mode
@@ -80,7 +81,7 @@ map <F5> :%s/\s\+$//<CR>    "<F5> Remove whitespaces from end of line
     " Suffices when doing 'gf' stuff.
     set suffixesadd+=.html,.pl,.pm,.tex,.sty,.css,.xml,.xsd,.txt,.ict
     set suffixesadd+=.shtml,.phtml,.ehtml,.epl,.rss,.rdf,.pod,.asp
-    
+
     if has("wildignore") | set wildignore+=&suffixes | endif
 
     fun! FTCheck()
@@ -108,7 +109,7 @@ map <F5> :%s/\s\+$//<CR>    "<F5> Remove whitespaces from end of line
     hi TabLine ctermbg=Gray ctermfg=DarkGray cterm=NONE
     hi TabLineSel ctermbg=DarkBlue ctermfg=White cterm=NONE,bold
     hi TabLineFill ctermbg=DarkGray ctermfg=Gray
-    hi Comment guifg=DarkGreen ctermfg=DarkGreen 
+    hi Comment guifg=DarkGreen ctermfg=DarkGreen
     hi Constant guifg=Green ctermfg=Green
     hi MailSubject guifg=Cyan ctermfg=Cyan
     hi Statement guifg=DarkCyan ctermfg=DarkCyan
@@ -121,10 +122,10 @@ map <F5> :%s/\s\+$//<CR>    "<F5> Remove whitespaces from end of line
     hi makeError guibg=Black ctermbg=Black
     hi masonLoc cterm=bold,underline
     hi htmlLink ctermfg=White cterm=bold,underline
-    hi perlPOD guifg=DarkGreen ctermfg=DarkGreen 
+    hi perlPOD guifg=DarkGreen ctermfg=DarkGreen
     hi podVerbatimLine ctermfg=Brown guifg=DarkYellow
-    hi podCommand guifg=Green ctermfg=Green 
-    hi podCmdText guifg=Green ctermfg=Green 
+    hi podCommand guifg=Green ctermfg=Green
+    hi podCmdText guifg=Green ctermfg=Green
     hi WhiteSpaceEOL ctermbg=Red guibg=Red
 " }}}
 syntax on
@@ -173,7 +174,7 @@ colorscheme koehler
     autocmd BufNewFile,BufRead *.hsc        setf haskell
     autocmd BufNewFile,BufRead *.hs-drift   setf haskell
     autocmd BufNewFile,BufRead *.tt         setf tt2
-    autocmd BufNewFile,BufRead *.pod        hi perlPOD ctermfg=Gray 
+    autocmd BufNewFile,BufRead *.pod        hi perlPOD ctermfg=Gray
     autocmd BufNewFile,BufRead w3m*         set fileencoding=utf-8
 
     " For all text files set 'textwidth' to 78 characters.
@@ -215,11 +216,11 @@ map \d :cscope find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 cab csd cscope find d
 
 " Find functions calling this function:
-map \c :cscope find c <C-R>=expand("<cword>")<CR><CR>:copen<CR> 
+map \c :cscope find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 cab csc cscope find c
 
 " Find this text string:
-map \t :cscope find t <C-R>=expand("<cword>")<CR><CR>:copen<CR> 
+map \t :cscope find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 cab cst cscope find t
 
 " Change this text string:
@@ -296,7 +297,7 @@ fun! CStyle()
     syn keyword cOperator likely unlikely
 
     let c_space_errors=1
-    
+
     "syn match ErrorLeadSpace /^ \+/      " highlight any leading spaces
     "syn match ErrorTailSpace / \+$/      " highlight any trailing spaces
     "match Error80            /\%>80v.\+/ " highlight anything past 80 in red
